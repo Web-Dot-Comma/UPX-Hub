@@ -1,107 +1,172 @@
 <!DOCTYPE html>
-<html lang="pt-br">
+<html lang="pt-BR">
 <head>
     <meta charset="UTF-8">
-    <title>UPX Hub</title>
-    <meta name="description" content="Página de apresentação dos projetos desenvolvidos na 
-    UPX - Usina de Projetos Experimentais da UniFacens">
+    <title>UPX Hub | Projetos da UPX UniFacens</title>
+    <meta name="description" content="Conheça os projetos da UPX (UniFacens) sobre drenagem urbana e alagamentos em Sorocaba, desenvolvidos por estudantes de Engenharia da Computação.">
+    <link rel="canonical" href="https://upx-hub.vercel.app/">
+    <meta name="robots" content="index, follow">
+    <link rel="icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="UPX Hub - Compartilhe. Colabore. Transforme.">
+    <meta property="og:description" content="Projetos da UPX UniFacens sobre drenagem urbana e alagamentos em Sorocaba.">
+    <meta property="og:image" content="https://upx-hub.vercel.app/img/projPluvia.jpg">
+    <meta property="og:url" content="https://upx-hub.vercel.app/">
+    <meta property="og:locale" content="pt_BR">
+    <meta name="twitter:card" content="summary_large_image">
 </head>
 <body>
-    <h1>UPX Hub</h1>
-    <nav>
-        <p> 
-            <a href="#conheça"> Conheça a UPX </a> | 
-            <a href="#sobre"> Sobre o Grupo </a>
-        </p>
-    </nav>
+    <header>
+        <h1 style="font-size: 83px"> UPX Hub - Compartilhe. Colabore. Transforme.</h1>
+        <nav>
+            <ul> 
+                <li> 
+                    <a href="#listaProj"> Projetos </a> 
+                </li>
+                <li> 
+                    <a href="#conheca"> Conheça a UPX </a> 
+                </li>
+                <li> 
+                    <a href="#sobre"> Sobre o Grupo </a> 
+                </li>
+            </ul>
+        </nav>
+    </header>
 
-    <section id="listaProj">
-        <h2> Projetos: </h2>
+    <main>
+        <section id="listaProj">
+            <h2> Projetos da UPX UniFacens </h2>
 
-        <div class="projetos">
+            <article class="projetos">
+                <h3> Projeto Pluvia </h3>
+                <img class="imgProj" src="img/proj-pluvia-alagamento.webp" alt="Imagem do Grupo Projeto Pluvia na apresentação com o avaliador e o protótipo" width="400" height="300" loading="lazy">
+                <p class="descProj"> 
+                    O Projeto Pluvia antecipa o alagamento antes da chuva chegar. Para o cidadão,
+                    oferece segurança e previsibilidade ao alertar quando o bueiro está obstruído e existe chance
+                    de chuva. Já para a gestão pública, possibilita a mitigação de danos e custos causados por
+                    alagamentos, transformando a manutenção corretiva dos sistemas de captação pluviométrica
+                    do local em uma manutenção preditiva. Assim, o Projeto Pluvia converte gastos emergenciais
+                    em economia estratégica, diminuindo riscos e protegendo a mobilidade urbana.
+                </p>
+            </article>
+            <article class="projetos">
+                <h3> Modelo de Drenagem Urbana para Sorocaba </h3>
+                <img class="imgProj" src="img/proj-drenagem-urbana.webp" alt="Imagem do Grupo Drenagem Urbana na apresentação com os avaliadores e o protótipo" width="400" height="300" loading="lazy">
+                <p class="descProj"> 
+                    O modelo de drenagem urbana proposto tem como objetivo elevar a qualidade de vida da população
+                    sorocabana. Ao reduzir a frequência e a intensidade das enchentes, a solução minimiza prejuízos
+                    individuais, como a perda de bens (ex: casas, veículos e móveis) e a exposição a doenças; e 
+                    também impactos coletivos, como danos à economia local, interrupções na mobilidade urbana, 
+                    despejamento de lixo nos rios e sobrecarga dos serviços públicos. Dessa forma, contribui para 
+                    uma cidade mais segura e preparada para os desafios climáticos.
+                </p> 
+            </article>
+        </section>
 
-            <h3> Projeto Pluvia </h3>
-            <img class="imgProj" src="img/projPluvia.jpg" alt="Imagem do Grupo Projeto Pluvia na apresentação com o avaliador e o protótipo">
-            <p class="descProj"> 
-                O Projeto Pluvia antecipa o alagamento antes da chuva chegar. Para o cidadão,
-                oferece segurança e previsibilidade ao alertar quando o bueiro está obstruído e existe chance
-                de chuva. Já para a gestão pública, possibilita a mitigação de danos e custos causados por
-                alagamentos, transformando a manutenção corretiva dos sistemas de captação pluviométrica
-                do local em uma manutenção preditiva. Assim, o Projeto Pluvia converte gastos emergenciais
-                em economia estratégica, diminuindo riscos e protegendo a mobilidade urbana.
+        <section id="conheca">
+            <h2> Conheça a Usina de Projetos Experimentais - UPX </h2>
+            <p> 
+                A unidade curricular UPX tem como foco o desenvolvimento de competências técnicas e 
+                socioemocionais e a ampliação da consciência socioambiental e da atitude empreendedora 
+                do aluno por meio do desenvolvimento de soluções para desafios reais e organizações da 
+                sociedade civil.  
             </p>
-        </div>
-        <div class="projetos">
-            <h3> Drenagem Urbana </h3>
-            <img class="imgProj" src="img/drenagemUrbana.jpg" alt="Imagem do Grupo Drenagem Urbana na apresentação com os avaliadores e o protótipo">
-            <p class="descProj"> 
-                O modelo de drenagem urbana proposto tem como objetivo elevar a qualidade de vida da população
-                sorocabana. Ao reduzir a frequência e a intensidade das enchentes, a solução minimiza prejuízos
-                individuais, como a perda de bens (ex: casas, veículos e móveis) e a exposição a doenças; e 
-                também impactos coletivos, como danos à economia local, interrupções na mobilidade urbana, 
-                despejamento de lixo nos rios e sobrecarga dos serviços públicos. Dessa forma, contribui para 
-                uma cidade mais segura e preparada para os desafios climáticos.
-            </p> 
-        </div>
-    </section>
+            <p></p>
+                A UPX integra o ecossistema UniFacens, seus centros de inovação e o mercado de trabalho ao 
+                currículo dos cursos de graduação por meio de uma narrativa inovadora e criativa dentro da 
+                sala de aula e através do nosso ambiente virtual de aprendizagem.
+            </p>
+            <p>
+                Os nossos alunos são encorajados a compreender os desafios globais, a desenvolver projetos 
+                relacionados ao tema do semestre, a colaborar em equipe, a interagir com empresas e aprimorar 
+                as suas competências técnicas e socioemocionais.
+            </p>
+            <p>
+                Dentre os temas abordados em cada semestre estão:
+            </p>
+            <ul>
+                <li> 
+                    Cidades Inteligentes
+                </li>
+                <li>
+                    Desenvolvimento Sustentável
+                </li>
+                <li> 
+                    Energias Renováveis
+                </li>
+                <li> 
+                    Mobilidade e Urbanização
+                </li>
+                <li>
+                    Transformação Digital
+                </li>
+                <li>
+                    Sociedade Híbrida
+                </li>
+                <li>
+                    Impactos das Mudanças Climáticas
+                </li>
+                <li>
+                    Empreendedorismo e Inovação Social
+                </li>
+            </ul>
 
-    <section id="conheça">
-        <h2> Conheça a Usina de Projetos Experimentais - UPX </h2>
-        <p> 
-            A unidade curricular UPX tem como foco o desenvolvimento de competências técnicas e 
-            socioemocionais e a ampliação da consciência socioambiental e da atitude empreendedora 
-            do aluno por meio do desenvolvimento de soluções para desafios reais e organizações da 
-            sociedade civil.  
-            <br> <br>
-            A UPX integra o ecossistema UniFacens, seus centros de inovação e o mercado de trabalho ao 
-            currículo dos cursos de graduação por meio de uma narrativa inovadora e criativa dentro da 
-            sala de aula e através do nosso ambiente virtual de aprendizagem.
-            <br> <br>
-            Os nossos alunos são encorajados a compreender os desafios globais, a desenvolver projetos 
-            relacionados ao tema do semestre, a colaborar em equipe, a interagir com empresas e aprimorar 
-            as suas competências técnicas e socioemocionais.
-            <br> <br>
-            Dentre os temas abordados em cada semestre estão:
-        </p>
-        <ul>
-            <li> 
-                Cidades Inteligentes
-            </li>
-            <li>
-                Desenvolvimento Sustentável
-            </li>
-            <li> 
-                Energias Renováveis
-            </li>
-            <li> 
-                Mobilidade e Urbanização
-            </li>
-            <li>
-                Transformação Digital
-            </li>
-            <li>
-                Sociedade Híbrida
-            </li>
-            <li>
-                Impactos das Mudanças Climáticas
-            </li>
-            <li>
-                Empreendedorismo e Inovação Social
-            </li>
-        </ul>
-    </section>
+            <p>
+                Saiba mais sobre a UPX e os projetos desenvolvidos pelos alunos no site oficial da UniFacens:
+                <a href="https://facens.br/" target="_blank" rel="noopener noreferrer">site oficial da UniFacens</a>
+            </p>
+        </section>
 
-    <section id="sobre">
-        <h2> Sobre o Grupo </h2>
-        <p> 
-            O grupo de pesquisa UPX Hub é formado por alunos da UniFacens, para a disciplina de Web Design
-        </p>
+        <section id="sobre">
+            <h2> Sobre o Grupo </h2>
 
-    </section>
+            <img id="imgGrupo" src="img/logo-dot-comma.webp" alt="Logo do grupo Dot Comma" width="200" height="200" loading="lazy">
+            <p> 
+                O Dot Comma é um grupo de estudantes do 2º semestre de Engenharia da Computação, 
+                unido pelo entusiasmo por tecnologia, design e desenvolvimento de software. 
+                Nosso time uniu os conhecimentos das disciplinas de Web Design e Usina de 
+                Projetos Experimentais (UPX) para criar o UPX Hub.
+            </p>
+            <p>
+                O UPX Hub nasce como uma plataforma centralizada para abrigar e dar visibilidade 
+                aos trabalhos desenvolvidos ao longo da jornada acadêmica. Mais do que um simples 
+                repositório, o objetivo do projeto é estimular a interação entre alunos, facilitar 
+                o compartilhamento de conhecimento e transformar ideias acadêmicas em uma comunidade 
+                colaborativa.
+            </p>
+
+            <h3> 
+                Membros do Grupo: 
+            </h3>
+
+            <ul> 
+                <li>
+                    Ana Kilciauskas
+                </li>
+                <li>
+                    Erica Yuying
+                </li>
+                <li>
+                    Erick Ruibin
+                </li>
+                <li>
+                    Frederico Rodrigues
+                </li>
+                <li>
+                    Isadora Fioravante
+                </li>
+            </ul>
+
+        </section>
+    </main>
     <footer>
-
+        <h3> UPX Hub </h3>
+        <p> 
+            Desenvolvido por estudantes do 2º semestre de Engenharia da Computação da UniFacens.
+        </p>
         <p id="copyright"> 
             &copy; 2026 UPX Hub - Todos os direitos reservados.
         </p>
