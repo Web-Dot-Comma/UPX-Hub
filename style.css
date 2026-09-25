@@ -1,3 +1,4 @@
+/* cabeçalho */
 header {
     position: fixed;
     top: 0px;
@@ -5,6 +6,7 @@ header {
     left: 0px;
     right: 0px;
     background-color: rgb(28, 28, 156);
+     z-index: 1000;
 }
 
     h1 {
@@ -33,10 +35,6 @@ header {
         color:rgb(104, 105, 160);
     }
 
-        nav ul li a:hover {
-            color:aliceblue;
-        }
-
         nav ul li:nth-child(1) a {
             right: 600px;
         }
@@ -56,3 +54,49 @@ header {
         nav ul li:nth-child(5) a {
             right: 50px;
         }
+    
+    nav ul li a:hover {
+            color:aliceblue;
+        }
+
+    #listaProj, 
+    #conheca, 
+    #sobre, 
+    #faq, 
+    #proposta {
+        display: none;
+    }
+    
+    #listaProj:target {
+        display: block;
+    }
+    #conheca:target {
+        display: block;
+    }
+    #sobre:target {
+        display: block;
+    }
+    #faq:target {
+        display: block;
+    }
+    #proposta:target {
+        display: block;
+    }
+
+    body:has(#listaProj:target) nav ul li:nth-child(1) a,
+    body:has(#conheca:target)   nav ul li:nth-child(2) a,
+    body:has(#sobre:target)     nav ul li:nth-child(3) a,
+    body:has(#faq:target)       nav ul li:nth-child(4) a,
+    body:has(#proposta:target)  nav ul li:nth-child(5) a {
+        color: aliceblue;
+    }
+
+/*footer*/
+footer {
+    background-color:rgb(28, 28, 156);
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 12px;
+    padding: 2px;
+    color: aliceblue;
+}
+
