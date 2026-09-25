@@ -1,7 +1,58 @@
-head{
-    margin: 20px;
-    padding:0;
-    background-color: rgb(14, 14, 143);
-    font-family:'Times New Roman', Times, serif;
-
+header {
+    position: fixed;
+    top: 0px;
+    bottom:550px;
+    left: 0px;
+    right: 0px;
+    background-color: rgb(28, 28, 156);
 }
+
+    h1 {
+        position: absolute;
+        top: 21px;
+        left: 6px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 22px !important;
+        color:rgb(28, 28, 156);
+        background-color: aliceblue;
+        padding:2px;
+        margin: 0px;
+        border-radius: 8px;
+    }
+
+    nav ul li {
+        list-style-type: none;
+    }
+
+    nav ul li a {
+        position: absolute;
+        top: 24px;
+        font-family: 'Times New Roman', Times, serif;
+        font-size: 18px !important;
+        text-decoration: none; 
+        color:rgb(104, 105, 160);
+    }
+
+        nav ul li a:hover {
+            color:aliceblue;
+        }
+
+        nav ul li:nth-child(1) a {
+            right: 600px;
+        }
+
+        nav ul li:nth-child(2) a {
+            right: 430px;
+        }
+
+        nav ul li:nth-child(3) a {
+            right: 270px;
+        }
+
+        nav ul li:nth-child(4) a {
+            right: 170px;
+        }
+
+        nav ul li:nth-child(5) a {
+            right: 50px;
+        }
