@@ -2,9 +2,9 @@
 header {
     position: fixed;
     top: 0px;
-    bottom:550px;
     left: 0px;
     right: 0px;
+    height: 60px;
     background-color: rgb(28, 28, 156);
      z-index: 1000;
 }
@@ -12,13 +12,14 @@ header {
     h1 {
         position: absolute;
         top: 21px;
-        left: 6px;
+        left: 10px;
         font-family: 'Times New Roman', Times, serif;
         font-size: 22px !important;
         color:rgb(28, 28, 156);
         background-color: aliceblue;
         padding:2px;
-        margin: 0px;
+        margin: -3px;
+        border: 1px solid rgb(2, 7, 71);
         border-radius: 8px;
     }
 
@@ -91,12 +92,67 @@ header {
         color: aliceblue;
     }
 
+/*body*/
+body {
+    position: relative;
+    padding-top: 50px;
+    padding-bottom: 150px;
+}
+
+html {
+    scroll-padding-top: 80px;
+}
+
+/*Titulos de abas*/
+h2 {
+    font-family: 'Times New Roman', Times, serif;
+    font-size: 22px;
+    text-align: center;
+}
+.projetos {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    column-gap: 15px;
+    row-gap: 0px;
+}
+
+.projetos h3 {
+    width: 100%;
+}
+
+.descProj {
+    align-self:flex-start;
+    margin-top: 0px;
+    flex: 1;
+}
+
+.imgProj {
+    margin-left: 20px;
+    max-width: 33%;
+    flex:1;
+    margin-bottom: 50px;
+
+}
+
+p, 
+h3 {
+    margin-right: 40px;
+    margin-left: 20px;
+    text-align: justify;
+}
+
+
+
 /*footer*/
 footer {
+    position:absolute;
+    left: 0px;
+    right: 0px;
+    bottom: 0px;
     background-color:rgb(28, 28, 156);
     font-family: 'Times New Roman', Times, serif;
     font-size: 12px;
     padding: 2px;
     color: aliceblue;
 }
-
