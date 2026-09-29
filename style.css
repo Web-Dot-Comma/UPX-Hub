@@ -118,14 +118,6 @@
             }
         }
 
-    h1 {
-        font-size: 30px !important;
-        color: var(--branco);
-        background-color: var(--roxo-claro);
-        padding:2px;
-        margin: 0px;
-    }
-
     #listaProj, 
     #conheca, 
     #sobre{
@@ -179,18 +171,25 @@ h2 {
 }
 
 .imgProj {
-    margin-left: 20px;
-    max-width: 33%;
+    margin-left: 30px;
+    max-width: 30%;
+    max-height: fit-content;
     flex:1;
-    margin-bottom: 50px;
+    margin-bottom: 30px;
 
 }
 
 p, 
 h3 {
-    margin-right: 40px;
-    margin-left: 20px;
+    margin-right: 50px;
+    margin-left: 30px;
     text-align: justify;
+}
+
+#faq,
+#proposta {
+    margin-top:80px;
+    margin-bottom: 40px;
 }
 
 footer {
