@@ -20,6 +20,7 @@
 
         main {
             flex: 1;
+            padding-top: 60px;
         }
         .site-header {
             width: 100%;
@@ -70,8 +71,7 @@
             letter-spacing: 0.5px;
         }
 
-        .main-nav ul,
-        nav ul {
+        .main-nav ul {
             display: flex;
             flex-direction: row;
             align-items: center;
@@ -81,8 +81,7 @@
             padding: 0;
         }
 
-        .main-nav a,
-        nav ul li a {
+        .main-nav a {
             display: inline-block;
             color: var(--branco);
             text-decoration: none;
@@ -95,10 +94,6 @@
 
         .main-nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
-        }
-
-         nav ul li a:hover {
-            color:var(--amarelo);
         }
 
         .main-nav a.active {
@@ -123,10 +118,6 @@
             }
         }
 
-
-    header nav ul {
-        background-color: var(--roxo-claro);
-    }
     h1 {
         font-size: 30px !important;
         color: var(--branco);
@@ -137,39 +128,34 @@
 
     #listaProj, 
     #conheca, 
-    #sobre, 
-    #faq, 
-    #proposta {
+    #sobre{
         display: none;
         scroll-margin-top: 100px;
-    }
-
-    body:has(#listaProj:target) nav ul li:nth-child(1) a,
-    body:has(#conheca:target)   nav ul li:nth-child(2) a,
-    body:has(#sobre:target)     nav ul li:nth-child(3) a,
-    body:has(#faq:target)       nav ul li:nth-child(4) a,
-    body:has(#proposta:target)  nav ul li:nth-child(5) a {
-        background-color: var(--branco);
-        color: var(--roxo-principal);
-        font-weight: bold;
-        border: 1px solid var(--roxo-principal);
     }
 
     body:not(:has(:target)) #listaProj,
     #listaProj:target,
     #conheca:target,
-    #sobre:target,
-    #faq:target,
-    #proposta:target {
-    display: block;
-}
+    #sobre:target{
+        display: block;
+    }
 
-    body:not(:has(:target)) nav ul li:nth-child(1) a {
-    background-color: var(--branco);
-    color: var(--roxo-principal);
-    font-weight: bold;
-    border: 1px solid var(--roxo-principal);
-}
+    body:has(#conheca:target) .main-nav a.active,
+    body:has(#sobre:target)   .main-nav a.active {
+        background-color: transparent;
+        color: var(--branco);
+        border: none;
+    }
+    
+    body:not(:has(:target)) nav ul li:nth-child(1) a,
+    body:has(#listaProj:target) nav ul li:nth-child(1) a,
+    body:has(#conheca:target)   nav ul li:nth-child(2) a,
+    body:has(#sobre:target)    nav ul li:nth-child(4) a{
+        background-color: var(--branco);
+        color: var(--roxo-principal);
+        font-weight: bold;
+        border: 1px solid var(--roxo-principal);
+    }
 
 h2 {
     text-align: center;
@@ -206,7 +192,6 @@ h3 {
     margin-left: 20px;
     text-align: justify;
 }
-
 
 footer {
     margin-top: auto;
