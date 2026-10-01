@@ -110,7 +110,7 @@
 
         @media (max-width: 720px) {
             :root {
-                --header-height: 60px; 
+                --header-height: 100px; 
             }
             .header-container {
                 flex-direction: column;
