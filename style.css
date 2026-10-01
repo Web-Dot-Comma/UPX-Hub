@@ -172,8 +172,8 @@ h2 {
 
 .imgProj {
     margin-left: 30px;
-    max-width: 30%;
-    max-height: fit-content;
+    width: 50vw;
+    height: auto;
     flex:1;
     margin-bottom: 30px;
 
