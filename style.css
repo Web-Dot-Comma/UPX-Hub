@@ -172,10 +172,10 @@ h2 {
 
 .imgProj {
     margin-left: 30px;
-    width: 30vw;
+    max-width: 50%;
     height: auto;
     flex:1;
-    margin-right: 40px;
+    justify-content: center;
     margin-bottom: 30px;
 
 }
