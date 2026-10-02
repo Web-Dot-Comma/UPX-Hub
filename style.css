@@ -1,3 +1,4 @@
+/*variáveis globais - paleta de cores do site*/
 :root {
             --roxo-principal: #4B2E83;
             --roxo-claro: #6C3FA8;
@@ -6,19 +7,24 @@
             --header-height: 80px;
         }
 
+
+    /*seletor universal - definição de regras de mudança de tamanho para todos os elementos*/
         * {
             box-sizing: border-box;
         }
+
 
         body {
             margin: 0;
             font-family: 'Segoe UI', Arial, sans-serif;
             position: relative;
             display: flex;
-            flex-direction: column; 
+            flex-direction: column;
             min-height: 100vh;
         }
 
+
+        /*Configuração para impedir o conteúdo da página de ser escondido pelo header*/
         main {
             flex: 1;
             padding-top: var(--header-height);
@@ -32,6 +38,8 @@
             z-index: 1000;
         }
 
+
+        /*Definição da posição do header*/
         .header-container {
             display: flex;
             align-items: center;
@@ -41,6 +49,8 @@
             background: linear-gradient(90deg, var(--roxo-principal), var(--roxo-claro));
         }
 
+
+        /*estilizações de header*/
         .logo-badge {
             display: flex;
             align-items: center;
@@ -52,15 +62,19 @@
             white-space: nowrap;
         }
 
+
+        /*estilizações do título*/
         .logo-text {
             font-weight: 700;
             color: var(--roxo-principal);
             font-size: 1.1rem;
         }
 
+
         .logo-dot {
             color: var(--amarelo);
         }
+
 
         .logo-tag {
             background-color: #F1EAFB;
@@ -72,6 +86,8 @@
             letter-spacing: 0.5px;
         }
 
+
+        /*Organização dos links para acessar cada aba*/
         .main-nav ul {
             display: flex;
             flex-direction: row;
@@ -81,6 +97,7 @@
             margin: 0;
             padding: 0;
         }
+
 
         .main-nav a {
             display: inline-block;
@@ -92,66 +109,83 @@
             border-radius: 999px;
             transition: background-color 0.2s ease;
         }
-
+       
+        /*Definição de cor para quando o mouse passa pelo link*/
         .main-nav a:hover {
             background-color: rgba(255, 255, 255, 0.15);
         }
 
+
+        /*Definição de cor para quando o mouse passa pelo link*/
         .main-nav a.active {
             background-color: var(--branco);
             color: var(--roxo-principal);
             font-weight: 700;
         }
 
+
         .header-accent {
             height: 8px;
             background-color: var(--amarelo);
         }
 
+
+        /*mudança de layout para dispositivos mobile*/
         @media (max-width: 720px) {
             :root {
-                --header-height: 140px;
+                --header-height: 160px;
             }
             .header-container {
                 flex-direction: column;
                 align-items: flex-start;
             }
 
+
             .main-nav ul {
                 flex-wrap: wrap;
             }
         }
 
-    #listaProj, 
-    #conheca, 
+
+    /*Sistema de navegação em abas*/
+    /*esconde o conteúdo de todos os ids (abas)*/
+    #listaProj,
+    #conheca,
+    #cadastro,
     #sobre{
         display: none;
         scroll-margin-top: 100px;
     }
 
+
     body:not(:has(:target)) #listaProj,
     #listaProj:target,
     #conheca:target,
+    #cadastro:target,
     #sobre:target{
         display: block;
     }
 
+
     body:has(#conheca:target) .main-nav a.active,
-    body:has(#sobre:target)   .main-nav a.active {
+    body:has(#sobre:target)   .main-nav a.active,
+    body:has(#cadastro:target) .main-nav a.active {
         background-color: transparent;
         color: var(--branco);
         border: none;
     }
-    
+   
     body:not(:has(:target)) nav ul li:nth-child(1) a,
     body:has(#listaProj:target) nav ul li:nth-child(1) a,
     body:has(#conheca:target)   nav ul li:nth-child(2) a,
+    body:has(#cadastro:target)   nav ul li:nth-child(3) a,
     body:has(#sobre:target)    nav ul li:nth-child(4) a{
         background-color: var(--branco);
         color: var(--roxo-principal);
         font-weight: bold;
         border: 1px solid var(--roxo-principal);
     }
+
 
 h2 {
     text-align: center;
@@ -164,15 +198,18 @@ h2 {
     row-gap: 0px;
 }
 
+
 .projetos h3 {
     width: 100%;
 }
+
 
 .descProj {
     align-self:flex-start;
     margin-top: 0px;
     flex: 1;
 }
+
 
 .imgProj {
     max-width: 50%;
@@ -181,20 +218,24 @@ h2 {
     justify-content: center;
     margin-bottom: 30px;
 
+
 }
 
-p, 
+
+p,
 h3 {
     margin-right: 50px;
     margin-left: 30px;
     text-align: justify;
 }
 
+
 #faq,
 #proposta {
     margin-top:80px;
     margin-bottom: 40px;
 }
+
 
 footer {
     margin-top: auto;
@@ -203,3 +244,5 @@ footer {
     padding: 2px;
     color: var(--branco);
 }
+
+
