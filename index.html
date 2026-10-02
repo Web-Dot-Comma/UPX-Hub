@@ -11,6 +11,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
+
     <meta property="og:type" content="website">
     <meta property="og:title" content="UPX Hub - Compartilhe. Colabore. Transforme.">
     <meta property="og:description" content="Projetos da UPX UniFacens sobre drenagem urbana e alagamentos em Sorocaba.">
@@ -22,12 +23,15 @@
 <body>
     <header class="site-header">
 
+
         <div class="header-container">
+
 
             <a href="#" class="logo-badge">
                 <span class="logo-text">UPX <span class="logo-dot">•</span> Hub</span>
                 <span class="logo-tag">FACENS</span>
             </a>
+
 
             <!-- Menu de navegação com os itens Projetos, Conheça a UPX, Cadastre seu projeto e Sobre o grupo -->
             <nav class="main-nav">
@@ -39,7 +43,7 @@
                         <a href="#conheca">Conheça a UPX</a>
                     </li>
                     <li>
-                        <a href="#">Cadastre seu Projeto</a>
+                        <a href="#cadastro">Cadastre seu Projeto</a>
                     </li>
                     <li>
                         <a href="#sobre">Sobre o Grupo</a>
@@ -47,23 +51,26 @@
                 </ul>
             </nav>
 
+
         </div>
-    
+   
     <!-- Div de estilização -->
     <div class="header-accent"></div>
     </header>
 
+
     <main>
         <!-- Seção do site com os projetos cadastrados, com as informações e imagens padronizadas.
-        Os elementos do artigo, imagem e parágrafo de cada projeto contam com suas respectivas 
+        Os elementos do artigo, imagem e parágrafo de cada projeto contam com suas respectivas
         classes para estilização e organização -->
         <section id="listaProj">
             <h2> Projetos da UPX UniFacens </h2>
 
+
             <article class="projetos">
                 <h3> Projeto Pluvia </h3>
                 <img class="imgProj" src="img/proj-pluvia-alagamento.webp" alt="Imagem do Grupo Projeto Pluvia na apresentação com o avaliador e o protótipo" width="400" height="300" loading="lazy">
-                <p class="descProj"> 
+                <p class="descProj">
                     O Projeto Pluvia antecipa o alagamento antes da chuva chegar.
                     Para o cidadão, ele oferece segurança e previsibilidade.
                     O sistema alerta quando o bueiro está obstruído e existe chance de chuva.
@@ -73,10 +80,12 @@
                     O resultado é menos risco e mais proteção para a mobilidade urbana.
                 </p>
             </article>
+
+
             <article class="projetos">
                 <h3> Modelo de Drenagem Urbana para Sorocaba </h3>
                 <img class="imgProj" src="img/proj-drenagem-urbana.webp" alt="Imagem do Grupo Drenagem Urbana na apresentação com os avaliadores e o protótipo" width="400" height="300" loading="lazy">
-                <p class="descProj"> 
+                <p class="descProj">
                     O modelo de drenagem urbana proposto quer elevar a qualidade de vida da população sorocabana.
                     Ele reduz a frequência e a intensidade das enchentes.
                     Com isso, diminuem os prejuízos individuais, como a perda de casas, veículos e móveis.
@@ -84,11 +93,13 @@
                     Os impactos coletivos também caem: danos à economia local, interrupções na mobilidade urbana,
                     despejamento de lixo nos rios e sobrecarga dos serviços públicos.
                     Assim, a solução contribui para uma cidade mais segura e preparada para os desafios climáticos.
-                </p> 
+                </p>
             </article>
+
 
             <p>Conheça a <a href="#conheca">proposta da UPX</a> e veja <a href="#sobre">quem desenvolveu o UPX Hub</a>.</p>
         </section>
+
 
         <!-- Trecho com mais informações sobre a UPX, o que é, seu impacto na UniFacens e os temas
         de cada semestre -->
@@ -113,16 +124,16 @@
                 Dentre os temas abordados em cada semestre estão:
             </p>
             <ul>
-                <li> 
+                <li>
                     Cidades Inteligentes
                 </li>
                 <li>
                     Desenvolvimento Sustentável
                 </li>
-                <li> 
+                <li>
                     Energias Renováveis
                 </li>
-                <li> 
+                <li>
                     Mobilidade e Urbanização
                 </li>
                 <li>
@@ -139,6 +150,7 @@
                 </li>
             </ul>
 
+
             <!-- Trecho que direciona o usuário para o site oficial da UniFacens -->
             <p>
                 Saiba mais sobre a UPX e os projetos desenvolvidos pelos alunos no site oficial da UniFacens:
@@ -146,10 +158,38 @@
             </p>
         </section>
 
+
+        <!-- Seção com formulário para cadastro de projetos dos usuarios-->
+        <section id="cadastro">
+            <h2>
+                Cadastre seu projeto
+            </h2>
+
+
+            <h3>
+                Dados gerais do projeto
+            </h3>
+
+
+            <form action="/" method="POST">
+                <label for="nomeProj">Nome do projeto:</label>
+                <input type="text" id="nomeProj" name="nomeProj"> <br><br>
+                <label for="membros">Digite o nome dos membros (em linhas separadas):</label><br>
+                <textarea id="membros" name="membros" rows="8" cols="30" placeholder="ex:
+nome 1
+nome 2
+nome 3"></textarea>
+                <br><br>
+                <button type="submit">Enviar</button>
+            </form>
+        </section>
+
+
         <!-- Trecho com informações sobre o grupo de desenvolvimento da UPX Hub e seus integrantes.
         A imagem do grupo tem seu próprio id para estilização única -->
         <section id="sobre">
             <h2> Sobre o Grupo </h2>
+
 
             <img id="imgGrupo" src="img/logo-dot-comma.webp" alt="Logo do grupo Dot Comma" width="200" height="200" loading="lazy">
             <p>
@@ -165,11 +205,13 @@
                 O objetivo é transformar ideias acadêmicas em uma comunidade colaborativa.
             </p>
 
-            <h3> 
-                Membros do Grupo: 
+
+            <h3>
+                Membros do Grupo:
             </h3>
 
-            <ul> 
+
+            <ul>
                 <li>
                     Ana Kilciauskas
                 </li>
@@ -187,11 +229,14 @@
                 </li>
             </ul>
 
+
         </section>
+
 
         <!-- Seção com informações que respondem perguntas frequentes sobre a UPX -->
         <section id="faq">
             <h2>Perguntas frequentes sobre o UPX Hub</h2>
+
 
             <h3>O que é a UPX?</h3>
             <p>
@@ -200,12 +245,14 @@
                 Saiba mais na seção <a href="#conheca">Conheça a UPX</a>.
             </p>
 
+
             <h3>Quais temas a UPX aborda?</h3>
             <p>
                 Cada semestre tem um tema. Entre eles estão cidades inteligentes, energias renováveis,
                 mobilidade e urbanização, transformação digital e impactos das mudanças climáticas.
                 Os projetos deste site tratam de alagamentos e drenagem urbana em Sorocaba.
             </p>
+
 
             <h3>Quem desenvolveu o UPX Hub?</h3>
             <p>
@@ -214,12 +261,14 @@
                 Conheça os integrantes em <a href="#sobre">Sobre o Grupo</a>.
             </p>
 
+
             <h3>Como posso compartilhar e colaborar com o UPX Hub?</h3>
             <p>
                 Compartilhe o site com colegas, professores e amigos.
                 Colabore com ideias e sugestões sobre os projetos.
                 Assim, mais pessoas conhecem as soluções e ajudam a transformar a cidade.
             </p>
+
 
             <h3>Onde encontro mais informações sobre a UniFacens?</h3>
             <p>
@@ -229,13 +278,14 @@
             </p>
         </section>
 
-        <!-- Seção que convida os usuários a colaborar com o site criando e postando seus próprios 
-        projetos de UPX. O trecho de compartilhar a UPX Hub direciona o usuário para o WhatsApp, 
+
+        <!-- Seção que convida os usuários a colaborar com o site criando e postando seus próprios
+        projetos de UPX. O trecho de compartilhar a UPX Hub direciona o usuário para o WhatsApp,
         LinkedIn e Facebook -->
         <section id="proposta">
             <h2>Compartilhe, colabore e transforme com o UPX Hub</h2>
             <p>
-                Compartilhe os projetos desenvolvidos na UPX para que outros estudantes conheçam 
+                Compartilhe os projetos desenvolvidos na UPX para que outros estudantes conheçam
                 soluções reais para problemas da cidade.
             </p>
             <p>
@@ -243,7 +293,7 @@
                 várias pessoas contribuem.
             </p>
             <p>
-                Transforme trabalhos acadêmicos em impacto real, aproximando alunos, 
+                Transforme trabalhos acadêmicos em impacto real, aproximando alunos,
                 professores, empresas e a comunidade de Sorocaba.
             </p>
             <h3>Compartilhe o UPX Hub</h3>
@@ -262,13 +312,13 @@
     </main>
     <!-- Rodapé do site com informações finais -->
     <footer>
-        <p> 
-            <strong>UPX Hub</strong> - Projetos da UPX UniFacens 
+        <p>
+            <strong>UPX Hub</strong> - Projetos da UPX UniFacens
         </p>
-        <p> 
+        <p>
             Desenvolvido por estudantes do 2º semestre de Engenharia da Computação da UniFacens.
         </p>
-        <p id="copyright"> 
+        <p id="copyright">
             &copy; 2026 UPX Hub - Todos os direitos reservados.
         </p>
     </footer>
