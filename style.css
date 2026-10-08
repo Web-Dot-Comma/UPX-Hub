@@ -481,6 +481,11 @@ main {
     font-size: 0.9rem;
 }
 
+.no-project-found {
+    white-space: nowrap;
+    width: max-content;
+}
+
 .clear-filters-text {
     background: transparent;
     border: none;

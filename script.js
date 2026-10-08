@@ -47,6 +47,9 @@ document.addEventListener('DOMContentLoaded', () => {
     function renderizarProjetos(projetos) {
         grid.innerHTML = '';
         countLabel.textContent = `Exibindo ${projetos.length} projetos aprovados`;
+        if (projetos.length==0){
+            grid.innerHTML= '<p class="no-project-found">Nenhum projeto encontrado.</p>';
+        }
 
         projetos.forEach(proj => {
             const cursosHtml = proj.cursos.map(c => `<span class="course-tag">${c}</span>`).join('');
@@ -117,4 +120,28 @@ document.addEventListener('DOMContentLoaded', () => {
         document.getElementById('busca-projeto').value = '';
         atualizarChipsAtivos();
     });
+      //barra de pesquisa
+    const searchInput = document.getElementById('busca-projeto');
+    
+    searchInput.addEventListener('input', (event) => {
+        const value = formatString(event.target.value);
+
+        
+            const projetosEncontrados = projetosData.filter(projeto =>
+                formatString(projeto.titulo).includes(value) ||
+                formatString(projeto.tema).includes(value) ||
+                formatString(projeto.semestre).includes(value) ||
+                projeto.cursos.some(curso =>
+                    formatString(curso).includes(value))
+                );
+                renderizarProjetos(projetosEncontrados);
+    })
+        //funções para os valores retornarem sem precisar de pontuação e diferenciar o maiúsculo do minúsculo
+    function formatString(value){
+        return value
+        .toLowerCase() 
+        .trim()
+        .normalize('NFD')
+        .replace (/[\u0300-\u036f]/g, '');
+    }
 });
