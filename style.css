@@ -146,12 +146,9 @@ main {
         body:not(:has(:target)) #listaProj,
         #listaProj:target,
         #conheca:target,
+        #cadastro:target,
         #sobre:target{
             display: block;
-        }
-
-        #cadastro:target {
-            display: flex;
         }
 
         body:has(#conheca:target) .main-nav a.active,
@@ -212,7 +209,6 @@ main {
 
         #cadastro  {
             min-height: 100vh;
-            display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: flex-start;
@@ -365,6 +361,63 @@ main {
             margin-top:80px;
             margin-bottom: 40px;
         }
+
+/*Atividade 2 de Flexbox - apagar depois*/
+    #atv {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        flex-flow: row wrap;
+        justify-content: space between;
+        align-items: stretch;
+        align-content: space-around;
+        gap: 15px;
+        row-gap: 4px;
+        column-gap: 10px;
+        width: 100%;
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 30px;                            
+        border: 2px solid #b86cf7;                
+        background-color: #fed8ff;
+    }
+
+    .item,
+    .item-diferente {
+/*Propriedades de flexbox padrão nos itens*/
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 200px;
+    flex: 1 1 200px;
+
+    align-self: auto;
+    order: 1;
+    width: 220px;
+    height: 120px;
+    background-color: #953eaf;
+    color: #ffffff;
+    padding-top: 15px;
+    padding-right: 20px;
+    padding-bottom: 15px;
+    padding-left: 20px;
+    border-width: 2px;
+    border-style: solid;
+    border-color: #6a1b9a;
+    border-radius: 8px;
+    margin-top: 10px;
+    margin-right: 5px;
+    margin-bottom: 10px;
+    margin-left: 5px;
+}
+
+.item-diferente {
+    background-color: #e5d8f0;
+    color: #4a148c;
+    align-self: center;
+    order: -1;  /* Determina a ordem que o item aparece visualmente da lista */
+    flex-grow: 2; /* Determina o crescimento de um item*/
+    flex-shrink: 0; /*Determina o encolhimento de um item*/
+}
 
     footer {
         margin-top: auto;
