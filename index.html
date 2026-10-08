@@ -9,6 +9,7 @@
     <link rel="icon" href="img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
 
 
@@ -66,40 +67,64 @@
         <section id="listaProj">
             <h2> Projetos da UPX UniFacens </h2>
 
+            <!-- Novo Sistema de Filtros (Estilo Banner Amarelo) -->
+            <div class="filter-banner">
+                <div class="filter-controls">
+                    <div class="filter-selects">
+                        <button class="icon-btn" title="Filtros">
+                            <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 21v-7m0-4V3m8 18v-9m0-4V3m8 18v-5m0-4V3M1 14h6m2-6h6m2 8h6"/></svg>
+                        </button>
+                        <select id="filtro-curso">
+                            <option value="">Filtros por curso*</option>
+                            <option value="Eng. de Computação">Eng. de Computação</option>
+                            <option value="Eng. Mecatrônica">Eng. Mecatrônica</option>
+                            <option value="Eng. Civil">Eng. Civil</option>
+                            <option value="Eng. Produção">Eng. de Produção</option>
+                        </select>
+                        <select id="filtro-semestre">
+                            <option value="">Filtros por semestre*</option>
+                            <option value="1º Semestre">1º Semestre</option>
+                            <option value="2º Semestre">2º Semestre</option>
+                            <option value="3º Semestre">3º Semestre</option>
+                            <option value="4º Semestre">4º Semestre</option>
+                            <option value="5º Semestre">5º Semestre</option>
+                            <option value="6º Semestre">6º Semestre</option>
+                        </select>
+                        <select id="filtro-tema">
+                            <option value="">Tema do Projeto</option>
+                            <option value="Cidades Inteligentes">Cidades Inteligentes</option>
+                            <option value="Sustentabilidade">Sustentabilidade</option>
+                            <option value="Robótica">Robótica</option>
+                            <option value="Saúde Digital">Saúde Digital</option>
+                        </select>
+                    </div>
+                    <div class="search-bar">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="8"/><path d="M21 21l-4.35-4.35"/></svg>
+                        <input type="text" id="busca-projeto" placeholder="Buscar por nome, tema, integrantes...">
+                    </div>
+                </div>
+                <button class="clear-filters-text" id="limpar-filtros">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 6h18M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"/></svg>
+                    Limpar Filtros
+                </button>
+            </div>
 
-            <article class="projetos">
-                <h3> Projeto Pluvia </h3>
-                <img class="imgProj" src="img/proj-pluvia-alagamento.webp" alt="Imagem do Grupo Projeto Pluvia na apresentação com o avaliador e o protótipo" width="400" height="300" loading="lazy">
-                <p class="descProj">
-                    O Projeto Pluvia antecipa o alagamento antes da chuva chegar.
-                    Para o cidadão, ele oferece segurança e previsibilidade.
-                    O sistema alerta quando o bueiro está obstruído e existe chance de chuva.
-                    Para a gestão pública, o projeto reduz danos e custos causados por alagamentos.
-                    Assim, a manutenção dos sistemas de captação pluviométrica deixa de ser corretiva e passa a ser preditiva.
-                    Com isso, gastos emergenciais viram economia estratégica.
-                    O resultado é menos risco e mais proteção para a mobilidade urbana.
-                </p>
-            </article>
+            <!-- Faixa de Filtros Ativos -->
+            <div class="active-filters-row">
+                <div class="active-chips" id="active-chips-container">
+                    <span class="active-filters-label">FILTROS ATIVOS:</span>
+                    <!-- Chips serão inseridos via JS -->
+                </div>
+                <span class="projects-count" id="projects-count">Exibindo 0 projetos aprovados</span>
+            </div>
 
+            <!-- Grade de Projetos Dinâmica -->
+            <div class="projetos-grid" id="projetos-grid">
+                <!-- Projetos renderizados via script.js -->
+            </div>
 
-            <article class="projetos">
-                <h3> Modelo de Drenagem Urbana para Sorocaba </h3>
-                <img class="imgProj" src="img/proj-drenagem-urbana.webp" alt="Imagem do Grupo Drenagem Urbana na apresentação com os avaliadores e o protótipo" width="400" height="300" loading="lazy">
-                <p class="descProj">
-                    O modelo de drenagem urbana proposto quer elevar a qualidade de vida da população sorocabana.
-                    Ele reduz a frequência e a intensidade das enchentes.
-                    Com isso, diminuem os prejuízos individuais, como a perda de casas, veículos e móveis.
-                    Diminui também a exposição a doenças.
-                    Os impactos coletivos também caem: danos à economia local, interrupções na mobilidade urbana,
-                    despejamento de lixo nos rios e sobrecarga dos serviços públicos.
-                    Assim, a solução contribui para uma cidade mais segura e preparada para os desafios climáticos.
-                </p>
-            </article>
-
-
-            <p>Conheça a <a href="#conheca">proposta da UPX</a> e veja <a href="#sobre">quem desenvolveu o UPX Hub</a>.</p>
+            <p style="text-align: center; margin-top: 20px;">Conheça a <a href="#conheca">proposta da UPX</a> e veja <a href="#sobre">quem desenvolveu o UPX Hub</a>.</p>
         </section>
-
 
         <!-- Trecho com mais informações sobre a UPX, o que é, seu impacto na UniFacens e os temas
         de cada semestre -->
@@ -300,30 +325,7 @@ nome 3"></textarea> <br><br>
             </ul>
         </section>
 
-        <!-- Atividade 2 de flexbox - apagar depois-->
-         <section id="atv">
-            <br> <br>
-            <article class="item">Item 1</article>
-            <article class="item">Item 2</article>
-            <article class="item">Item 3</article>
-            <article class="item">Item 4</article>
-            <article class="item">Item 5</article>
-            <article class="item">Item 6</article>
-            <article class="item">Item 7</article>
-            <article class="item">Item 8</article>
-            <article class="item">Item 9</article>
-            <article class="item">Item 10</article>
-            <article class="item">Item 11</article>
-            <article class="item">Item 12</article>
-            <article class="item">Item 13</article>
-            <article class="item">Item 14</article>
-            <article class="item">Item 15</article>
-            <article class="item">Item 16</article>
-            <article class="item">Item 17</article>
-            <article class="item">Item 18</article>
-            <article class="item-diferente">Item 19 - Especial</article>
-            <article class="item-diferente">Item 20 - Especial</article>
-         </section>
+        
 
         <!-- Seção com informações que respondem perguntas frequentes sobre a UPX -->
         <section id="faq">
