@@ -161,30 +161,98 @@
 
         <!-- Seção com formulário para cadastro de projetos dos usuarios-->
         <section id="cadastro">
-            <h2>
-                Cadastre seu projeto
-            </h2>
+            <div class="forms-container">
+                <div class="steps">
+                    <div class="step"><span>1</span><p>Dados gerais</p></div>
+                    <div class="step"><span>2</span><p>Categorias</p></div>
+                    <div class="step"><span>3</span><p>Arquivos</p></div>
+                </div>
 
+                    <input type="radio" id="step1" name="step" checked/>
+                    <input type="radio" id="step2" name="step"/>
+                    <input type="radio" id="step3" name="step"/>
 
-            <h3>
-                Dados gerais do projeto
-            </h3>
-
-
-            <form action="/" method="POST">
-                <label for="nomeProj">Nome do projeto:</label>
-                <input type="text" id="nomeProj" name="nomeProj"> <br><br>
-                <label for="membros">Digite o nome dos membros (em linhas separadas):</label><br>
-                <textarea id="membros" name="membros" rows="8" cols="30" placeholder="ex:
+                <form class="form" action="/" method="POST">
+                    <div class="form-step step-1">
+                        <label for="nomeProj">Nome do projeto:</label> <br>
+                        <input type="text" id="nomeProj" name="nomeProj" required> <br><br>
+                        <label for="membros">Digite o nome dos membros (em linhas separadas):</label><br>
+                        <textarea id="membros" name="membros" required rows="8" cols="30" placeholder="ex:
 nome 1
 nome 2
-nome 3"></textarea>
-                <br><br>
-                <button type="submit">Enviar</button>
-            </form>
-        </section>
+nome 3"></textarea> <br><br>
+                        <label for="resumo"> Digite o resumo do seu trabalho: </label> <br>
+                        <textarea id="resumo" name="resumo" required> </textarea> <br> <br>
+                        <label for="step2" class="next-btn">Próximo</label>
+                    </div>
+
+                    <div class="form-step step-2">
+                        <label for="semestre"> Selecione a UPX correspondente: </label>
+                            <div>
+                                <input type="radio" id="opcSem1" name="semestre" value="UPX1"  required/>
+                                <label for="opcSem1">UPX 1</label> <br>
+                                <input type="radio" id="opcSem2" name="semestre" value="UPX2" />
+                                <label for="opcSem2">UPX 2</label> <br>
+                                <input type="radio" id="opcSem3" name="semestre" value="UPX3" />
+                                <label for="opcSem3">UPX 3</label> <br>
+                                <input type="radio" id="opcSem4" name="semestre" value="UPX4" />
+                                <label for="opcSem4">UPX 4</label> <br>
+                                <input type="radio" id="opcSem5" name="semestre" value="UPX5" />
+                                <label for="opcSem5">UPX 5</label> <br>
+                                <input type="radio" id="opcSem6" name="semestre" value="UPX6" />
+                                <label for="opcSem6">UPX 6</label> <br>
+                                <input type="radio" id="opcSem7" name="semestre" value="UPX7" />
+                                <label for="opcSem7">UPX 7</label> <br>
+                                <input type="radio" id="opcSem8" name="semestre" value="UPX8" />
+                                <label for="opcSem8">UPX 8</label> <br> <br>
+                            </div> 
+
+                        <label for="tema">Selecione os temas que se encaixam no seu projeto:</label> <br>
+                            <div>
+                                <input type="checkbox" id="opcTema1" name="tema" value="Gestão Hídrica" required>
+                                <label for="opcTema1">Gestão Hídrica</label> <br>
+                                <input type="checkbox" id="opcTema2" name="tema" value="Iluminação Inteligente">
+                                <label for="opcTema2">Iluminação Inteligente</label> <br>
+                                <input type="checkbox" id="opcTema3" name="tema" value="Gestão de Resíduos">
+                                <label for="opcTema3">Gestão de Resíduos</label> <br>
+                                <input type="checkbox" id="opcTema4" name="tema" value="Sensores Urbanos">
+                                <label for="opcTema3">Sensores Urbanos</label> <br>
+                                <input type="checkbox" id="opcTema5" name="tema" value="Reciclagem">
+                                <label for="opcTema5">Reciclagem</label> <br>
+                                <input type="checkbox" id="opcTema6" name="tema" value="Energia Solar">
+                                <label for="opcTema6">Energia Solar</label> <br>
+                                <input type="checkbox" id="opcTema7" name="tema" value="Energia Eólica">
+                                <label for="opcTema7">Energia Eólica</label> <br>
+                                <input type="checkbox" id="opcTema8" name="tema" value="Baterias">
+                                <label for="opcTema8">Baterias</label> <br>
+                                <input type="checkbox" id="opcTema9" name="tema" value="Machine Learning">
+                                <label for="opcTema9">Machine Learning</label> <br>
+                                <input type="checkbox" id="opcTema10" name="tema" value="Desenvolvimento Web/Mobile">
+                                <label for="opcTema10">Desenvolvimento Web/Mobile</label> <br>
+                                <input type="checkbox" id="opcTema11" name="tema" value="Inclusão Digital">
+                                <label for="opcTema11">Inclusão Digital</label> <br>
+                                <input type="checkbox" id="opcTema12" name="tema" value="Educação Conectada (EdTech)">
+                                <label for="opcTema12">Educação Conectada (EdTech)</label> <br>
+                                <input type="checkbox" id="opcTema13" name="tema" value="Modelos de Negócio">
+                                <label for="opcTema13">Modelos de Negócio</label> <br> <br>
+                            </div>
+                            <label for="step1" class="prev-btn">Anterior</label>
+                            <label for="step3" class="next-btn">Próximo</label>
 
 
+                    </div>
+
+                    <div class="form-step step-3">
+                        <label for="uploadImgProj" required> Enviar foto de grupo na feira de UPX</label> <br>
+                        <input type="file" id="uploadImgProj" name="uploadImgProj" accept="image/*"> <br> <br>
+                        <label for="uploadProj" required> Enviar arquivo PDF de UPX</label> <br>
+                        <input type="file" id="uploadProj" name="uploadProj" accept=".pdf"> <br> <br>
+                        <label for="step2" class="prev-btn">Anterior</label>
+                        <button type="submit">Enviar</button>
+                    </div>
+                </form>
+                </div>
+            
         <!-- Trecho com informações sobre o grupo de desenvolvimento da UPX Hub e seus integrantes.
         A imagem do grupo tem seu próprio id para estilização única -->
         <section id="sobre">
