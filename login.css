@@ -1,0 +1,54 @@
+:root {
+    --roxo-principal: #4B2E83;
+    --roxo-claro: #6C3FA8;
+    --amarelo: #FFC928;
+    --branco: #FFFFFF;
+}
+
+* {
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Arial, sans-serif;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 50vh;
+    background: var(--branco);
+}
+
+.login-page {
+    width: 420px;
+    background: var(--roxo-principal);
+    color: var(--branco);
+}
+
+.login-page h1 {
+    font-size: 36px;
+    text-align: center;
+}
+
+.login-page .campos-login {
+    width: 100%;
+    height: 50px;
+    margin: 30px 0;
+}
+
+.campos-login input {
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    border: none;
+    outline: none;
+    border: 2px solid var(--roxo-claro);
+    border-radius: 40px;
+    font-size: 16px;
+    color: var(--branco);
+    padding: 20px 45px 20px 20px;
+}
+
+.campos-login input::placeholder {
+    color: var(--branco);
+}
