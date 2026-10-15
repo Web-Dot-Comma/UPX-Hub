@@ -85,7 +85,7 @@ document.addEventListener('DOMContentLoaded', () => {
                                     <span class="qtd">${proj.likes}</span>
                                 </button>
                             </div>
-                            <button class="btn-ver">Ver</button>
+                            <button class="btn-ver" onclick="window.location.href='Projeto-Page/projects.html'" >Ver</button>
                         </div>
                     </div>
                 </article>
