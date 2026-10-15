@@ -1,76 +1,89 @@
 document.addEventListener('DOMContentLoaded', () => {
-    // Array simulando os dados que virão da Supabase
-    const projetosData = [
-        {
-            id: 1,
-            titulo: "Projeto Pluvia",
-            desc: "O Projeto Pluvia antecipa o alagamento antes da chuva chegar oferecendo segurança e previsibilidade.",
-            imagem: "img/proj-pluvia-alagamento.webp",
-            upx: "UPX II",
-            semestre: "2º SEMESTRE",
-            tema: "Cidades Inteligentes",
-            cursos: ["Computação", "Mecatrônica"],
-            devs: 5,
-            likes: 24
-        },
-        {
-            id: 2,
-            titulo: "Modelo de Drenagem",
-            desc: "O modelo de drenagem urbana proposto quer elevar a qualidade de vida da população, reduzindo a intensidade das enchentes.",
-            imagem: "img/proj-drenagem-urbana.webp",
-            upx: "UPX IV",
-            semestre: "4º SEMESTRE",
-            tema: "Sustentabilidade",
-            cursos: ["Civil", "Computação"],
-            devs: 4,
-            likes: 18
-        },
-        {
-            id: 3,
-            titulo: "SmartCity Sorocaba",
-            desc: "Plataforma IoT distribuída para sensores urbanos de tráfego, alagamento e qualidade do ar em tempo real.",
-            imagem: "img/proj-pluvia-alagamento.webp", // Placeholder
-            upx: "UPX VI",
-            semestre: "6º SEMESTRE",
-            tema: "Automação",
-            cursos: ["Computação", "Mecatrônica"],
-            devs: 6,
-            likes: 42
-        }
-    ];
+    // Este bloco é só da home: se a página não tiver a grade de projetos, não faz nada
+    if (!document.getElementById('projetos-grid')) return;
+
+    // Projetos carregados do Supabase
+    let projetosData = [];
+
+        // Curtidas do usuário logado
+    let usuarioId = null;
+    let meusLikes = new Set();
+
+    async function carregarMeusLikes() {
+        const { data: { session } } = await cliente.auth.getSession();
+        usuarioId = session ? session.user.id : null;
+        meusLikes = new Set();
+        if (!usuarioId) return;
+
+        const { data } = await cliente
+            .from('curtidas')
+            .select('projeto_id')
+            .eq('user_id', usuarioId);
+        meusLikes = new Set((data || []).map(l => l.projeto_id));
+    }
+
+    const ROMANOS = ['I', 'II', 'III', 'IV', 'V', 'VI', 'VII', 'VIII'];
+
+    // Converte uma linha do banco para o formato que o site já usa
+    function converterProjeto(linha) {
+        return {
+            id: linha.id,
+            titulo: linha.titulo,
+            desc: linha.descricao,
+            imagem: linha.imagem_url || 'img/proj-pluvia-alagamento.webp',
+            upx: 'UPX ' + ROMANOS[linha.semestre - 1],
+            semestre: linha.semestre + 'º SEMESTRE',
+            tema: linha.tema,
+            cursos: linha.cursos,
+            devs: linha.membros.length,
+            likes: linha.curtidas[0] ? linha.curtidas[0].count : 0
+        };
+    }
+
+    // Evita que texto digitado por usuários seja interpretado como HTML
+    function escaparHtml(texto) {
+        return String(texto)
+            .replace(/&/g, '&amp;')
+            .replace(/</g, '&lt;')
+            .replace(/>/g, '&gt;')
+            .replace(/"/g, '&quot;')
+            .replace(/'/g, '&#39;');
+    }
 
     const grid = document.getElementById('projetos-grid');
     const countLabel = document.getElementById('projects-count');
     const chipsContainer = document.getElementById('active-chips-container');
-
-    // Função que converte o Array em HTML na tela
-    function renderizarProjetos(projetos) {
+    
+        function renderizarProjetos(projetos) {
         grid.innerHTML = '';
         countLabel.textContent = `Exibindo ${projetos.length} projetos aprovados`;
-        if (projetos.length==0){
-            grid.innerHTML= '<p class="no-project-found">Nenhum projeto encontrado.</p>';
+        if (projetos.length == 0) {
+            grid.innerHTML = '<p class="no-project-found">Nenhum projeto encontrado.</p>';
         }
 
         projetos.forEach(proj => {
-            const cursosHtml = proj.cursos.map(c => `<span class="course-tag">${c}</span>`).join('');
-            
+            const cursosHtml = proj.cursos.map(c => `<span class="course-tag">${escaparHtml(c)}</span>`).join('');
+
             const card = `
                 <article class="project-card">
                     <div class="card-image-wrapper">
-                        <span class="tag-top-left">${proj.upx} • ${proj.semestre}</span>
-                        <span class="tag-bottom-left">${proj.tema}</span>
-                        <img src="${proj.imagem}" alt="${proj.titulo}" loading="lazy">
+                        <span class="tag-top-left">${escaparHtml(proj.upx)} • ${escaparHtml(proj.semestre)}</span>
+                        <span class="tag-bottom-left">${escaparHtml(proj.tema)}</span>
+                        <img src="${escaparHtml(proj.imagem)}" alt="${escaparHtml(proj.titulo)}" loading="lazy">
                     </div>
                     <div class="card-content">
-                        <h4>${proj.titulo}</h4>
-                        <p class="card-desc">${proj.desc}</p>
+                        <h4>${escaparHtml(proj.titulo)}</h4>
+                        <p class="card-desc">${escaparHtml(proj.desc)}</p>
                         <div class="card-courses">
                             ${cursosHtml}
                         </div>
                         <div class="card-footer">
                             <div class="footer-info">
                                 <span>👥 ${proj.devs} devs</span>
-                                <span>❤️ ${proj.likes}</span>
+                                    <button class="btn-curtir ${meusLikes.has(proj.id) ? 'curtido' : ''}" data-id="${proj.id}" aria-label="Curtir projeto">
+                                    <span class="icone">${meusLikes.has(proj.id) ? '❤️' : '🤍'}</span>
+                                    <span class="qtd">${proj.likes}</span>
+                                </button>
                             </div>
                             <button class="btn-ver">Ver</button>
                         </div>
@@ -81,8 +94,70 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     }
 
-    // Inicialização do Array
-    renderizarProjetos(projetosData);
+    // Busca os projetos aprovados no Supabase
+    async function carregarProjetos() {
+        countLabel.textContent = 'Carregando projetos...';
+
+        const { data, error } = await cliente
+            .from('projetos')
+            .select('*, curtidas(count)')
+            .eq('status', 'aprovado')
+            .order('created_at', { ascending: false });
+
+        if (error) {
+            console.error(error);
+            countLabel.textContent = '';
+            grid.innerHTML = '<p class="no-project-found">Não foi possível carregar os projetos.</p>';
+            return;
+        }
+
+        await carregarMeusLikes();
+        projetosData = data.map(converterProjeto);
+        renderizarProjetos(projetosData);
+    }
+
+        // Curtir / descurtir (um único listener para todos os cards)
+    grid.addEventListener('click', async (evento) => {
+        const botao = evento.target.closest('.btn-curtir');
+        if (!botao) return;
+
+        // Quem não está logado vai para o login
+        if (!usuarioId) {
+            window.location.href = 'Login-Page/login.html';
+            return;
+        }
+
+        const id = Number(botao.dataset.id);
+        const jaCurtiu = meusLikes.has(id);
+        botao.disabled = true;
+
+        let erro;
+        if (jaCurtiu) {
+            ({ error: erro } = await cliente.from('curtidas')
+                .delete().eq('projeto_id', id).eq('user_id', usuarioId));
+        } else {
+            ({ error: erro } = await cliente.from('curtidas')
+                .insert({ projeto_id: id }));
+        }
+
+        botao.disabled = false;
+        if (erro) {
+            console.error(erro);
+            return;
+        }
+
+        // Atualiza a tela sem recarregar
+        const proj = projetosData.find(p => p.id === id);
+        if (jaCurtiu) { meusLikes.delete(id); proj.likes--; }
+        else { meusLikes.add(id); proj.likes++; }
+
+        botao.classList.toggle('curtido', !jaCurtiu);
+        botao.querySelector('.icone').textContent = jaCurtiu ? '🤍' : '❤️';
+        botao.querySelector('.qtd').textContent = proj.likes;
+    });
+
+    // Inicialização: busca os projetos no banco
+    carregarProjetos();
 
     // Sistema básico de escuta de filtros (pronto para ser expandido com as chamadas de API)
     const selects = document.querySelectorAll('.filter-selects select');
@@ -191,7 +266,7 @@ function validarEtapa(secao) {
     if (!campo.checkValidity()) {
         var mensagem;
         if (campo.type === "file" && campo.validity.valueMissing) {
-            mensagem = campo.id === "uploadImgProj"
+                mensagem = campo.accept.indexOf("image") !== -1
                 ? "Por favor, selecione uma imagem."
                 : "Por favor, selecione um arquivo PDF.";
             } 
@@ -287,16 +362,6 @@ window.previousStep = function () {
     currentStep--;
     etapaAnterior.style.display = "block";
     atualizarVisualProgresso(currentStep);
-};
-
-// Enviar formulário
-window.submitForm = function () {
-    var form = document.getElementById("formulario");
-    if (!form || !secao) return;
-    if (!validarEtapa(secao)) {
-        return;
-    }
-    form.submit();
 };
 
 // Função de adicionar/excluir desenvolvedor

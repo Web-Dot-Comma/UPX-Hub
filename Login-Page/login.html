@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <title>UPX Hub | Login</title>
     <meta name="description" content="Página de Login e Cadastro de usuários do site.">
-    <link rel="icon" href="img/favicon.png">
+    <link rel="icon" href="../img/favicon.png">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="/Login-Page/login.css">
-    <script src="/Login-Page/login.js" defer></script>
+    <link rel="stylesheet" href="login.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-client.js" defer></script>
+    <script src="login.js" defer></script>
 </head>
 <body>
 <main class="login-page">
@@ -53,7 +55,7 @@
 
     <!-- ================= LOGIN ================= -->
     <section class="painel active" id="painel-login" role="tabpanel" aria-labelledby="tab-login">
-        <form action="" novalidate>
+        <form id="form-login" novalidate>
             <h2>Entrar na sua conta</h2>
             <p class="painel-sub">Acesse seus grupos, bancas examinadoras e submissões.</p>
 
@@ -68,7 +70,7 @@
             <div class="campo">
                 <div class="label-row">
                     <label for="login-senha">Senha</label>
-                    <a href="#" class="link-roxo">Esqueci minha senha</a>
+                    <a href="#" class="link-roxo" id="link-esqueci">Esqueci minha senha</a>
                 </div>
                 <div class="input-wrap">
                     <svg class="ico" viewBox="0 0 24 24" ><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
@@ -83,14 +85,15 @@
                 <input type="checkbox">
                 <span>Lembrar de mim neste dispositivo</span>
             </label>
-
+            
+            <p class="mensagem" id="msg-login" role="alert" hidden></p>
             <button type="submit" class="botao-login">Entrar no UPX Hub</button>
         </form>
     </section>
 
     <!-- ================= CADASTRO ================= -->
     <section class="painel" id="painel-cadastro" role="tabpanel" aria-labelledby="tab-cadastro" hidden>
-        <form action="" novalidate>
+        <form id="form-cadastro" novalidate>
             <h2>Criar conta</h2>
             <p class="painel-sub">Para discentes e docentes da UniFacens.</p>
 
@@ -125,8 +128,7 @@
                     <label for="cad-semestre">Semestre</label>
                     <select id="cad-semestre" required>
                         <option value="" selected disabled>Sem.</option>
-                        <option>1º</option><option>2º</option><option>3º</option>
-                        <option>4º</option><option>5º</option><option>6º</option>
+                        <option>4º</option><option>5º</option><option>6º</option><option>7º</option><option>8º</option>
                     </select>
                 </div>
             </div>
@@ -160,6 +162,7 @@
                 <span>Concordo com os <a href="#" class="link-roxo">Termos de Uso</a> e as diretrizes do ecossistema experimental UniFacens.</span>
             </label>
 
+            <p class="mensagem" id="msg-cadastro" role="alert" hidden></p>
             <button type="submit" class="botao-login">Criar conta</button>
         </form>
     </section>

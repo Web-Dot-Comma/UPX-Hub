@@ -437,3 +437,21 @@ main {
 .btn-ver:hover {
     background: var(--roxo-claro);
 }
+
+/* Botão de curtir */
+.btn-curtir {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    padding: 0;
+    border: none;
+    background: transparent;
+    color: #888;
+    font: inherit;
+    font-weight: 500;
+    cursor: pointer;
+}
+
+.btn-curtir:hover { color: var(--roxo-principal); }
+.btn-curtir.curtido { color: #d60012; font-weight: 700; }
+.btn-curtir:disabled { opacity: 0.5; cursor: wait; }

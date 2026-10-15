@@ -7,12 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="cadastro.css">
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-client.js" defer></script>
     <script src="../script.js" defer></script>
+    <script src="cadastro.js" defer></script>
 </head>
 <body>
     <header class="site-header">
         <div class="header-container">
-            <a href="index.html" class="logo-badge">
+            <a href="../index.html" class="logo-badge">
                 <span class="logo-text">UPX <span class="logo-dot">•</span> Hub</span>
                 <span class="logo-tag">FACENS</span>
             </a>
@@ -54,7 +57,7 @@
                     </div>
                 </div>
 
-                <form class="form" id="formulario" action="/" method="POST">
+                <form class="form" id="formulario">
                     <section id="step1">
                         <h3><span>❖</span>1. Dados gerais </h3>
                         <label for="nomeProj">Título</label> <br>
@@ -75,16 +78,16 @@
                         <h3><span>☷</span>2. Categorias </h3>
                         <label for="semestre"> Semestre de UPX </label>
                             <div>
-                                <select name="semestre">
-                                    <option value="1° semestre">1° semestre</option>
-                                    <option value="2° semestre">2° semestre</option>
-                                    <option value="3° semestre">3° semestre</option>
-                                    <option value="4° semestre">4° semestre</option>
-                                    <option value="5° semestre">5° semestre</option>
-                                    <option value="6° semestre">6° semestre</option>
-                                    <option value="7° semestre">7° semestre</option>
-                                    <option value="8° semestre">8° semestre</option>
-                                </select> <br><br>
+                                <select name="semestre" id="semestre">
+                                <option value="1">1° semestre</option>
+                                <option value="2">2° semestre</option>
+                                <option value="3">3° semestre</option>
+                                <option value="4">4° semestre</option>
+                                <option value="5">5° semestre</option>
+                                <option value="6">6° semestre</option>
+                                <option value="7">7° semestre</option>
+                                <option value="8">8° semestre</option>
+                            </select> <br><br>
                             </div> 
 
                         <label for="curso"> Cursos envolvidos </label>
@@ -101,10 +104,10 @@
 
                         <label for="tema">Tema</label> <br>
                             <div class="opcoes">
-                                <input type="radio" name="tema" value="Cidades inteligentes" required>Cidades inteligentes <br>
+                                <input type="radio" name="tema" value="Cidades Inteligentes" required>Cidades Inteligentes <br>
                                 <input type="radio" name="tema" value="Sustentabilidade" >Sustentabilidade <br>
                                 <input type="radio" name="tema" value="Robótica" >Robótica <br>
-                                <input type="radio" name="tema" value="Saúde digital" >Saúde digital <br> <br>
+                                <input type="radio" name="tema" value="Saúde Digital" >Saúde Digital <br> <br>
                             </div>
                             <button type="button" class="btn-prev" onclick="previousStep()">← Anterior</button>
                             <button type="button" class="btn-next" onclick="nextStep()">Próximo →</button>
@@ -121,6 +124,7 @@
                         <button type="button" class="btn-prev" onclick="previousStep()">← Anterior</button>
                         <button type="button" class="btn-submit" onclick="submitForm()">Enviar</button>
                     </section>
+                    <p class="msg-form" id="msg-cadastro-projeto" role="alert" hidden></p>
                 </form>
             </div>
         </section>

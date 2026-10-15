@@ -417,6 +417,31 @@ svg {
     height: 28px;
 }
 
+/* ---------- Mensagens de retorno ---------- */
+.mensagem {
+    margin-bottom: 14px;
+    padding: 10px 14px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    line-height: 1.4;
+}
+
+.mensagem.erro-msg {
+    background: #FDECEF;
+    color: var(--erro);
+}
+
+.mensagem.ok-msg {
+    background: #E8F6EE;
+    color: #1E7A45;
+}
+
+.botao-login:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}
+
 @media (max-width: 400px) {
     body { padding: 0; }
     .login-page { border-radius: 0; }

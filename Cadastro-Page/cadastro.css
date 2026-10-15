@@ -232,3 +232,17 @@
             margin-bottom: 6px;
             margin-top: 2px;
         }
+
+        /* Mensagens do envio do projeto */
+        .msg-form {
+            margin: 24px 0 0;
+            padding: 12px 16px;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+        }
+        .msg-form.erro { background: #FDECEF; color: #D92D45; }
+        .msg-form.ok   { background: #E8F6EE; color: #1E7A45; }
+        .msg-form.info { background: #F1EAFB; color: var(--roxo-principal); }
+
+        .btn-submit:disabled { opacity: 0.6; cursor: wait; }

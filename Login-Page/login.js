@@ -61,4 +61,139 @@ document.addEventListener('DOMContentLoaded', () => {
         confirma.setCustomValidity(diferente ? 'As senhas não coincidem.' : '');
     }
     confirma.addEventListener('input', validarConfirmacao);
+        // =========================================================
+    // SUPABASE
+    // =========================================================
+
+    const PAGINA_INICIAL = '../index.html';
+
+    // ----- Funções auxiliares -----
+    function mostrarMensagem(elemento, texto, tipo) {
+        elemento.textContent = texto;
+        elemento.className = 'mensagem ' + (tipo === 'ok' ? 'ok-msg' : 'erro-msg');
+        elemento.hidden = false;
+    }
+
+    function limparMensagem(elemento) {
+        elemento.hidden = true;
+        elemento.textContent = '';
+    }
+
+    function traduzirErro(erro) {
+        const msg = (erro.message || '').toLowerCase();
+        if (msg.includes('invalid login credentials')) return 'E-mail ou senha incorretos.';
+        if (msg.includes('email not confirmed')) return 'Confirme seu e-mail antes de entrar. Verifique sua caixa de entrada.';
+        if (msg.includes('already registered')) return 'Este e-mail já está cadastrado.';
+        if (msg.includes('password should be at least')) return 'A senha deve ter pelo menos 8 caracteres.';
+        if (msg.includes('rate limit')) return 'Muitas tentativas. Aguarde um pouco e tente de novo.';
+        return 'Não foi possível concluir. Tente novamente.';
+    }
+        // ----- Login -----
+    const formLogin = document.getElementById('form-login');
+    const msgLogin = document.getElementById('msg-login');
+
+    formLogin.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+        limparMensagem(msgLogin);
+        if (!formLogin.reportValidity()) return;
+
+        const botao = formLogin.querySelector('.botao-login');
+        botao.disabled = true;
+
+        try {
+            const { error } = await cliente.auth.signInWithPassword({
+                email: document.getElementById('login-email').value.trim(),
+                password: document.getElementById('login-senha').value
+            });
+
+            if (error) {
+                mostrarMensagem(msgLogin, traduzirErro(error), 'erro');
+                return;
+            }
+            window.location.href = PAGINA_INICIAL;
+        } catch (erro) {
+            console.error(erro);
+            mostrarMensagem(msgLogin, 'Não foi possível conectar ao servidor. Recarregue a página e tente de novo.', 'erro');
+        } finally {
+            botao.disabled = false;
+        }
+    });
+
+    // ----- Cadastro -----
+    const formCadastro = document.getElementById('form-cadastro');
+    const msgCadastro = document.getElementById('msg-cadastro');
+
+    formCadastro.addEventListener('submit', async (evento) => {
+        evento.preventDefault();
+        limparMensagem(msgCadastro);
+        if (!formCadastro.reportValidity()) return;
+
+        const botao = formCadastro.querySelector('.botao-login');
+        botao.disabled = true;
+
+        try {
+            const { data, error } = await cliente.auth.signUp({
+                email: document.getElementById('cad-email').value.trim(),
+                password: document.getElementById('cad-senha').value,
+                options: {
+                    data: {
+                        nome: document.getElementById('cad-nome').value.trim(),
+                        curso: document.getElementById('cad-curso').value,
+                        semestre: document.getElementById('cad-semestre').value
+                    },
+                    emailRedirectTo: window.location.href.split('#')[0].split('?')[0]
+                }
+            });
+
+            if (error) {
+                mostrarMensagem(msgCadastro, traduzirErro(error), 'erro');
+                return;
+            }
+
+            // Com confirmação por e-mail ligada, e-mail já existente volta sem identidades
+            if (data.user && data.user.identities && data.user.identities.length === 0) {
+                mostrarMensagem(msgCadastro, 'Este e-mail já está cadastrado.', 'erro');
+                return;
+            }
+
+            formCadastro.reset();
+            forca.dataset.nivel = 0;
+            forcaTexto.textContent = 'Fraca';
+
+            if (data.session) {
+                // Confirmação desligada: já entra logado
+                window.location.href = PAGINA_INICIAL;
+            } else {
+                mostrarMensagem(msgCadastro, 'Conta criada! Enviamos um link de confirmação para o seu e-mail.', 'ok');
+            }
+        } catch (erro) {
+            console.error(erro);
+            mostrarMensagem(msgCadastro, 'Não foi possível conectar ao servidor. Recarregue a página e tente de novo.', 'erro');
+        } finally {
+            botao.disabled = false;
+        }
+    });
+
+    // ----- Esqueci minha senha -----
+    document.getElementById('link-esqueci').addEventListener('click', async (evento) => {
+        evento.preventDefault();
+        limparMensagem(msgLogin);
+
+        const emailInput = document.getElementById('login-email');
+        if (!emailInput.value.trim() || !emailInput.checkValidity()) {
+            mostrarMensagem(msgLogin, 'Digite seu e-mail no campo acima e clique novamente.', 'erro');
+            emailInput.focus();
+            return;
+        }
+
+        const { error } = await cliente.auth.resetPasswordForEmail(emailInput.value.trim(), {
+            redirectTo: window.location.origin + '/redefinir-senha.html'
+        });
+
+        if (error) {
+            mostrarMensagem(msgLogin, traduzirErro(error), 'erro');
+            return;
+        }
+        mostrarMensagem(msgLogin, 'Se o e-mail estiver cadastrado, você receberá um link para redefinir a senha.', 'ok');
+    });
 });
