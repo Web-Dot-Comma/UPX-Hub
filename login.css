@@ -43,7 +43,7 @@ body {
     border: none;
     outline: none;
     border: 2px solid var(--roxo-claro);
-    border-radius: 40px;
+    border-radius: 20px;
     font-size: 16px;
     color: var(--branco);
     padding: 20px 45px 20px 20px;
@@ -51,4 +51,37 @@ body {
 
 .campos-login input::placeholder {
     color: var(--branco);
+}
+
+
+.login-page .remember-login {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14.5px;
+    margin: -15px 0 15px;
+}
+
+.remember-login label input {
+    accent-color: var(--branco);
+    margin-right: 3px;
+}
+
+.remember-login a {
+    color: var(--branco);
+    text-decoration: none;
+}
+
+.remember-login a:hover {
+    text-decoration: underline;
+}
+
+.login-page .botao-login {
+    display: block;
+    width: 80%;
+    height: 45px;
+    margin: 20px auto 0;
+    background: var(--branco);
+    border: none;
+    outline: none;
+    border-radius: 20px;
 }
