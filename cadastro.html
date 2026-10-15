@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <title>Cadastro de projetos | UPX Hub</title>
+    <link rel="icon" href="img/favicon.png">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="cadastro.css">
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.html" class="logo-badge">
+                <span class="logo-text">UPX <span class="logo-dot">•</span> Hub</span>
+                <span class="logo-tag">FACENS</span>
+            </a>
+
+            <!-- Menu de navegação (com os links apontando de volta para a index) -->
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="index.html#listaProj">Projetos</a></li>
+                    <li><a href="conheca.html">Conheça a UPX</a></li>
+                    <li><a href="cadastro.html">Cadastre seu Projeto</a></li>
+                    <li><a href="index.html#sobre">Sobre o Grupo</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-accent"></div>
+    </header>
+
+    <main class="cadastro-main">
+<!-- Seção com formulário para cadastro de projetos dos usuarios-->
+        <section id="cadastro">
+            <div class="forms-container">
+                <h2> Cadastre seu <span>projeto</span></h2>
+                <p class="descrição"> Compartilhe seu projeto de UPX com a comunidade acadêmica da UniFacens e <br>
+                    dê visibilidade ao trabalho do seu time</p>
+                <div class="progresso-container">
+                    <div class="progresso">
+                        <div class="progresso-etapa active" id="etapa-1">
+                            <span>1</span><p>Dados gerais</p>
+                        </div>
+                        <div class="progresso-etapa" id="etapa-2">
+                            <span>2</span><p>Categorias</p>
+                        </div>
+                        <div class="progresso-etapa" id="etapa-3">
+                            <span>3</span><p>Arquivos</p>
+                        </div>
+                    </div>
+                    <div class="linha-progresso-fundo">
+                        <div class="linha-progresso-preenchida" id="linhaPreenchimento"></div>
+                    </div>
+                </div>
+
+                <form class="form" id="formulario" action="/" method="POST">
+                    <section id="step1">
+                        <h3><span>❖</span>1. Dados gerais </h3>
+                        <label for="nomeProj">Título</label> <br>
+                        <input type="text" id="nomeProj" name="nomeProj" required> <br><br>
+                            <div id="container-membros">
+                                <label for="membros">Nome do(s) desenvolvedor(es)</label><br>
+                                <div class="membro-item">
+                                    <input type="text" name="membros" required> <br> <br>
+                                </div>
+                            </div>
+                        <button type="button" class="btn-add" onclick="Addmember()">+ Adicionar dev</button> <br><br>
+                        <label for="resumo"> Resumo </label> <br>
+                        <textarea id="resumo" name="resumo" required></textarea> <br> <br>
+                        <button type="button" class="btn-next" onclick="nextStep()">Próximo →</button>
+                    </section>
+
+                    <section id="step2" style="display: none;">
+                        <h3><span>☷</span>2. Categorias </h3>
+                        <label for="semestre"> Semestre de UPX </label>
+                            <div>
+                                <select name="semestre">
+                                    <option value="1° semestre">1° semestre</option>
+                                    <option value="2° semestre">2° semestre</option>
+                                    <option value="3° semestre">3° semestre</option>
+                                    <option value="4° semestre">4° semestre</option>
+                                    <option value="5° semestre">5° semestre</option>
+                                    <option value="6° semestre">6° semestre</option>
+                                    <option value="7° semestre">7° semestre</option>
+                                    <option value="8° semestre">8° semestre</option>
+                                </select> <br><br>
+                            </div> 
+
+                        <label for="curso"> Cursos envolvidos </label>
+                            <div class="opcoes">
+                                <input type="checkbox" name="curso" value="Eng. de Computação">
+                                <label for="Eng. de Computação">Engenharia de Computação</label><br>
+                                <input type="checkbox" name="curso" value="Eng. Mecatrônica"> 
+                                <label for="Eng. Mecatrônica">Engenharia Mecatrônica</label> <br>
+                                <input type="checkbox" name="curso" value="Eng. Civil"> 
+                                <label for="Eng. Civil">Engenharia Civil</label> <br>
+                                <input type="checkbox" name="curso" value="Eng. de Produção">
+                                <label for="Eng. de Produção">Engenharia de Produção</label> <br><br>
+                            </div>
+
+                        <label for="tema">Tema</label> <br>
+                            <div class="opcoes">
+                                <input type="radio" name="tema" value="Cidades inteligentes" required>Cidades inteligentes <br>
+                                <input type="radio" name="tema" value="Sustentabilidade" >Sustentabilidade <br>
+                                <input type="radio" name="tema" value="Robótica" >Robótica <br>
+                                <input type="radio" name="tema" value="Saúde digital" >Saúde digital <br> <br>
+                            </div>
+                            <button type="button" class="btn-prev" onclick="previousStep()">← Anterior</button>
+                            <button type="button" class="btn-next" onclick="nextStep()">Próximo →</button>
+                    </section>
+
+                    <section id="step3" style="display: none;">
+                        <h3><span>⌸</span>3. Arquivos </h3>
+                        <label for="uploadImgProj"> Enviar foto de grupo na feira de UPX</label> <br>
+                        <input type="file" id="uploadImgProj" name="uploadImgProj" required accept="image/*"> <br> <br>
+                        <label for="uploadProj"> Enviar arquivo PDF de UPX</label> <br>
+                        <input type="file" id="uploadProj" name="uploadProj" required accept=".pdf"> <br> <br>
+                        <button type="button" class="btn-prev" onclick="previousStep()">← Anterior</button>
+                        <button type="button" class="btn-submit" onclick="submitForm()">Enviar</button>
+                    </section>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>UPX Hub</strong> - Projetos da UPX UniFacens</p>
+        <p>Desenvolvido por estudantes do 2º semestre de Engenharia da Computação da UniFacens.</p>
+        <p id="copyright">&copy; 2026 UPX Hub - Todos os direitos reservados.</p>
+    </footer>
+</body>
+</html>
