@@ -10,8 +10,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="projects.css">
-    <script src="script.js" defer></script>
+
     <link rel="apple-touch-icon" href="img/apple-touch-icon.png">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-client.js" defer></script>
+    <script src="../script.js" defer></script>
+    <script src="projects.js" defer></script>
 
 
     <meta property="og:type" content="website">
@@ -81,7 +86,15 @@
         
         <!-- Coluna Direita: Botões empilhados -->
         <div class="acoes-container-coluna">
-            <button class="action-btn">❤️ Curtidas</button>
+            <button
+    class="action-btn btn-curtir"
+    id="btn-curtir-detalhe"
+    data-id=""
+    aria-label="Curtir projeto"
+>
+    <span class="icone">🤍</span>
+    <span class="qtd">0</span> Curtidas
+</button>
             <button class="action-btn">👥 Devs</button>
             
         </div>
@@ -106,7 +119,7 @@
     </div>
 
     <div class="box">
-        <h1 id="projeto-titulo">Título</h1>
+        <h1 id="projeto-titulo-resumo">Título</h1>
         <h3 id=projeto-texto-resumo>Texto Resumo</h3>
     </div>
     
