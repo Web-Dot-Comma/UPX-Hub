@@ -111,7 +111,7 @@ main {
             background-color: rgba(255, 255, 255, 0.15);
         }
 
-/*Definição de cor para quando o mouse passa pelo link*/
+/*Definição de cor para quando esta dentro do link*/
         .main-nav a.active {
             background-color: var(--branco);
             color: var(--roxo-principal);
@@ -133,42 +133,7 @@ main {
         }
     }
 
-/*Sistema de navegação em abas*/
-/*esconde o conteúdo de todos os ids (abas)*/
-        #listaProj,
-        #conheca,
-        #cadastro,
-        #sobre{
-            display: none;
-            scroll-margin-top: 100px;
-        }
 
-        body:not(:has(:target)) #listaProj,
-        #listaProj:target,
-        #conheca:target,
-        #cadastro:target,
-        #sobre:target{
-            display: block;
-        }
-
-        body:has(#conheca:target) .main-nav a.active,
-        body:has(#sobre:target)   .main-nav a.active,
-        body:has(#cadastro:target) .main-nav a.active {
-            background-color: transparent;
-            color: var(--branco);
-            border: none;
-        }
-    
-        body:not(:has(:target)) nav ul li:nth-child(1) a,
-        body:has(#listaProj:target) nav ul li:nth-child(1) a,
-        body:has(#conheca:target)   nav ul li:nth-child(2) a,
-        body:has(#cadastro:target)   nav ul li:nth-child(3) a,
-        body:has(#sobre:target)    nav ul li:nth-child(4) a{
-            background-color: var(--branco);
-            color: var(--roxo-principal);
-            font-weight: bold;
-            border: 1px solid var(--roxo-principal);
-        }
 
         #faq,
         #proposta {
