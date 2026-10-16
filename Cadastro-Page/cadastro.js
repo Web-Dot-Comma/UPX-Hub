@@ -95,6 +95,7 @@ window.submitForm = async function () {
                 .map(function (i) { return i.value.trim(); })
                 .filter(Boolean),
             imagem_url: imagemUrl,
+            foto_equipe: imagemUrl,
             imagem_prototipo_url: prototipoUrl,
             pdf_url: pdfUrl
         });

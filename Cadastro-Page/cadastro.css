@@ -1,3 +1,8 @@
+ @media (max-width: 720px) {
+    .progresso-etapa p {
+        display: none;
+    }
+ }
 .cadastro-main  {
     min-height: 100vh;
     flex-direction: column;
