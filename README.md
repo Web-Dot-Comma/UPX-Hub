@@ -77,6 +77,9 @@ UPX-Hub/
     ├── projects.css
     └── projects.js
 
+``` 
+---
+
 Autores e Contribuintes
 Desenvolvido com dedicação por estudantes de Engenharia da Computação da UniFacens (2026):
 
@@ -89,3 +92,8 @@ Erica Yuying (R.A: 264238)
 Erick Ruibin (R.A: 264239)
 
 Frederico Rodrigues (R.A: 264182)
+
+---
+
+Licença
+Desenvolvido para fins acadêmicos sob as diretrizes institucionais da UniFacens. Todos os direitos reservados © 2026 UPX Hub.
