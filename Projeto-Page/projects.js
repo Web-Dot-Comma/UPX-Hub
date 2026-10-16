@@ -31,13 +31,11 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // Preenche as informações do projeto
             const titulo = document.getElementById('projeto-titulo');
-            const subtitulo = document.getElementById('projeto-subtitulo');
             const tituloResumo = document.getElementById('projeto-titulo-resumo');
             const textoResumo = document.getElementById('projeto-texto-resumo');
             const imgPrototipo = document.getElementById('img-prototipo');
             const imgEquipe = document.getElementById('img-equipe');
             const devs = document.getElementById('projeto-devs');
-
             const tagTema = document.getElementById('tag-theme')
             const tagSemestre = document.getElementById('tag-semester')
             const tagCurso = document.getElementById('tag-course')
@@ -59,11 +57,6 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (titulo) {
                 titulo.textContent = projeto.titulo;
-            }
-
-            if (subtitulo) {
-                subtitulo.textContent =
-                    projeto.subtítulo || projeto.descricao_curta || '';
             }
 
             if (tituloResumo) {
@@ -195,6 +188,61 @@ document.addEventListener('DOMContentLoaded', async () => {
             botao.disabled = false;
         }
     });
+
+
+    const formComentario = document.querySelector('.box-comment form.comment');
+
+    if (!formComentario) return;
+
+    formComentario.addEventListener('submit', async (e) => {
+        e.preventDefault(); 
+
+        const textarea = document.getElementById('comentario');
+        const textoComentario = textarea.value.trim();
+
+        if (!textoComentario) {
+            alert('Escreve algum comentário antes de enviar!');
+            return;
+        }
+
+        try {
+            // 1. Verifica se o utilizador está autenticado
+            const { data: { session }, error: erroSessao } = await cliente.auth.getSession();
+            if (erroSessao) throw erroSessao;
+
+            if (!session) {
+                alert('Precisas de iniciar sessão para comentar.');
+                window.location.href = '../Login-Page/login.html';
+                return;
+            }
+
+            const usuarioId = session.user.id;
+            
+            // Pega o ID do projeto que está no URL (como já fazemos em cima)
+            const projetoId = Number(new URLSearchParams(window.location.search).get('id'));
+
+            // 2. Insere o comentário no Supabase
+            const { error: erroInsert } = await cliente
+                .from('comentarios')
+                .insert({
+                    projeto_id: projetoId,
+                    user_id: usuarioId,
+                    conteudo: textoComentario
+                });
+
+            if (erroInsert) throw erroInsert;
+
+            // 3. Caso tenha sucesso! 
+            textarea.value = '';
+            alert('Comentário enviado com sucesso!');
+            
+        } catch (erro) {
+            console.error('Erro ao enviar comentário:', erro);
+            alert('Ocorreu um erro ao enviar o comentário. Tenta novamente.');
+        }
+    });
+
+
 
     // Inicializa a página
     carregarProjeto();
