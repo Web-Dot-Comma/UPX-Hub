@@ -109,3 +109,93 @@ body {
     margin: 0 auto 15px auto;
     text-align: justify;
 }
+
+.tag-iniciativa {
+    font-size: 11px;
+    color: #512da8;
+    font-weight: bold;
+    letter-spacing: 1px;
+    background-color: #f3e5f5;
+    padding: 4px 10px;
+    border-radius: 12px;
+    display: inline-block;
+    margin-bottom: 10px;
+}
+
+.intro-secao h1 {
+    font-size: 32px;
+    color: #111;
+    margin: 10px 0;
+}
+
+.intro-secao p {
+    font-size: 15px;
+    color: #555;
+    max-width: 750px;
+    margin: 0 auto 15px auto;
+    text-align: justify;
+}
+
+.grupo-container h2 {
+    font-size: 24px;
+    margin-bottom: 25px;
+    color: #111;
+    text-align: center;
+}
+
+.cards-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 25px;
+    justify-content: center;
+}
+
+.membro-card {
+    background-color: #ffffff;
+    border-radius: 16px;
+    padding: 25px 20px;
+    width: 280px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+    border: 1px solid #e2e8f0;
+    text-align: center;
+    transition: transform 0.2s;
+}
+
+.membro-card:hover {
+    transform: translateY(-5px);
+}
+
+.membro-card img {
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 15px;
+    border: 3px solid #512da8;
+}
+
+.membro-card h3 {
+    font-size: 18px;
+    color: #111;
+}
+
+.cargo {
+    font-size: 13px;
+    color: #512da8;
+    font-weight: bold;
+    margin: 5px 0 10px 0;
+}
+
+.bio {
+    font-size: 14px;
+    color: #666;
+    text-align: center;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #f1f1f1;
+    color: #666;
+    margin-top: 60px;
+    font-size: 14px;
+    border-top: 1px solid #e2e8f0;
+}
