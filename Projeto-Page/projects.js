@@ -38,6 +38,25 @@ document.addEventListener('DOMContentLoaded', async () => {
             const imgEquipe = document.getElementById('img-equipe');
             const devs = document.getElementById('projeto-devs');
 
+            const tagTema = document.getElementById('tag-theme')
+            const tagSemestre = document.getElementById('tag-semester')
+            const tagCurso = document.getElementById('tag-course')
+
+            if (tagTema) {
+                tagTema.textContent = projeto.tema || '';
+            }
+
+            if (tagSemestre) {
+                tagSemestre.textContent = projeto.semestre
+                ? `${projeto.semestre}º Semestre · UPX 2026.1`: '';
+            }
+
+            if (tagCurso) {
+                tagCurso.textContent = Array.isArray(projeto.cursos)
+                ? projeto.cursos.join(', ')
+                : projeto.cursos || '';
+            }       
+
             if (titulo) {
                 titulo.textContent = projeto.titulo;
             }
