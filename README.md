@@ -31,7 +31,7 @@ O **UPX Hub** é uma plataforma moderna e interativa criada para dar visibilidad
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 * **HTML5:** Marcação semântica, atributos de acessibilidade (`aria-*`) e elementos modernos de formulário.
 * **CSS3:** Variáveis personalizadas (`:root`), layouts em Flexbox e Grid, design responsivo com media queries e estilização de componentes.
@@ -40,3 +40,38 @@ O **UPX Hub** é uma plataforma moderna e interativa criada para dar visibilidad
 * **Git & GitHub:** Controle de versão e colaboração em equipe.
 
 ---
+## Arquitetura e Estrutura de Arquivos
+
+```text
+UPX-Hub/
+│
+├── index.html                   # Página principal e catálogo de projetos
+├── style.css                    # Estilos globais da aplicação
+├── script.js                    # Script principal e controle da home
+├── supabase-client.js           # Configuração e inicialização do cliente Supabase
+├── img/                         # Repositório de mídias (favicons e fotos dos membros)
+│   ├── favicon.png
+│   ├── logo-dot-comma.webp
+│   ├── Ana.jpg
+│   ├── Erica.jpg
+│   ├── Erick.jpg
+│   ├── Fred.jpg
+│   └── Isadora.jpg
+├── Conheca-Page/                # Módulo institucional da metodologia UPX
+│   ├── conheca.html
+│   └── conheca.css
+├── Grupo-Page/                  # Página de apresentação do grupo desenvolvedor
+│   ├── grupo.html
+│   └── grupo.css
+├── Cadastro-Page/               # Módulo de cadastro multi-etapas de projetos
+│   ├── cadastro.html
+│   ├── cadastro.css
+│   └── cadastro.js
+├── Login-Page/                  # Módulo de autenticação e gestão de usuários
+│   ├── login.html
+│   ├── login.css
+│   └── login.js
+└── Projects-Page/               # Módulo visualizador de detalhes do projeto
+    ├── projects.html
+    ├── projects.css
+    └── projects.js
