@@ -10,3 +10,42 @@ body {
     color: #222;
     line-height: 1.6;
 }
+
+.navbar {
+    background-color: #512da8;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 40px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    background: #ffffff;
+    padding: 6px 14px;
+    border-radius: 20px;
+}
+
+.badge-upx {
+    font-weight: bold;
+    color: #512da8;
+    font-size: 14px;
+}
+
+.hub-text {
+    font-weight: bold;
+    color: #333;
+    font-size: 14px;
+}
+
+.facens-tag {
+    background-color: #f3e5f5;
+    color: #7b1fa2;
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-size: 10px;
+    font-weight: bold;
+}
