@@ -1,11 +1,12 @@
-# UPX Hub 🚀
+# UPX Hub 
 
-> Plataforma web acadêmica centralizada desenvolvida por estudantes de Engenharia da Computação da **UniFacens** (Sorocaba) para exibir, cadastrar e gerenciar projetos da UPX (Usina de Projetos Esperimentais).
+> Plataforma web acadêmica centralizada desenvolvida por estudantes de Engenharia da Computação da **UniFacens** (Sorocaba) para exibir, cadastrar e gerenciar projetos da UPX (Usina de Projetos Experimentais).
 
 ---
 
 ## Sumário
 - [Sobre o Projeto](#sobre-o-projeto)
+- [Sobre a UPX](#sobre-a-upx-usina-de-projetos-experimentais)
 - [Principais Funcionalidades](#principais-funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura e Estrutura de Arquivos](#arquitetura-e-estrutura-de-arquivos)
@@ -16,6 +17,21 @@
 ## Sobre o Projeto
 
 O **UPX Hub** é uma plataforma moderna e interativa criada para dar visibilidade às soluções de engenharia e projetos multidisciplinares desenvolvidos ao longo dos semestres de UPX na UniFacens. O sistema permite que discentes e docentes se autentiquem de forma segura, explorem um catálogo dinâmico de projetos filtrado por cursos e semestres, curtam publicações, interajam via comentários, conheçam a metodologia experimental da instituição e cadastrem novas inovações acadêmicas com suporte a armazenamento em nuvem.
+
+---
+
+## Sobre a UPX (Usina de Projetos Experimentais)
+
+A **UPX (Usina de Projetos Experimentais)** é a metodologia curricular ativa e integradora da **UniFacens**, desenhada para conectar a teoria acadêmica à prática profissional desde o primeiro dia de faculdade. 
+
+Ao longo dos **8 semestres de graduação**, discentes de Engenharia da Computação e demais cursos desenvolvem projetos práticos e multidisciplinares focados na resolução de desafios reais da sociedade e da indústria. A jornada evolui gradativamente:
+
+- **1º ao 2º Semestre:** Introdução à engenharia, lógica de programação, circuitos básicos e prototipagem física/digital.
+- **3º ao 4º Semestre:** Sistemas embarcados, desenvolvimento web/mobile, estruturas de dados e arquitetura de software.
+- **5º ao 6º Semestre:** Redes de computadores, Internet das Coisas (IoT), banco de dados relacional/não-relacional e engenharia de software.
+- **7º ao 8º Semestre:** Inteligência Artificial, sistemas distribuídos, segurança da informação e soluções completas de mercado.
+
+O **UPX Hub** surge como a vitrine digital desse ecossistema, catalogando, preservando e compartilhando as inovações criadas por nossos estudantes.
 
 ---
 
@@ -79,7 +95,7 @@ UPX-Hub/
 ``` 
 ---
 
-Autores e Contribuintes
+## Autores e Contribuintes
 Desenvolvido com dedicação por estudantes de Engenharia da Computação do 2º semestre da UniFacens (2026):
 
 Isadora Fioravante (R.A: 264384)
