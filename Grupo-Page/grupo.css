@@ -1,25 +1,29 @@
+/* Selecionador universal: define box-sizing e remove margens/espaçamentos padrão */
 * {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
 }
-
+/* Configuração do fundo e tipografia base da página */
 body {
-    background-color: #f8f9fc;
-    color: #222;
-    line-height: 1.6;
+    background-color: #f8f9fc; /* Fundo suave levemente acinzentado */
+    color: #222; /* Cor do texto principal */
+    line-height: 1.6; /* Altura de linha para melhor leitura */
 }
-
+/* ==========================================================================
+    CABEÇALHO E BARRA DE NAVEGAÇÃO (NAVBAR)
+   ========================================================================== */
+/* Container principal da barra de navegação roxa */
 .navbar {
-    background-color: #512da8;
+    background-color: #512da8; /* Cor roxa institucional */
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
 }
-
+/* Container que envolve as partes da logo */
 .logo-container {
     display: flex;
     align-items: center;
@@ -28,19 +32,19 @@ body {
     padding: 6px 14px;
     border-radius: 20px;
 }
-
+/* Texto UPX no logo */
 .badge-upx {
     font-weight: bold;
     color: #512da8;
     font-size: 14px;
 }
-
+/* Texto HUB no logo */
 .hub-text {
     font-weight: bold;
     color: #333;
     font-size: 14px;
 }
-
+/* Badge indicativa da FACENS */
 .facens-tag {
     background-color: #f3e5f5;
     color: #7b1fa2;
@@ -49,14 +53,14 @@ body {
     font-size: 10px;
     font-weight: bold;
 }
-
+/* Lista de links de navegação */
 .nav-links {
     list-style: none;
     display: flex;
     gap: 15px;
     align-items: center;
 }
-
+/* Estilo individual de cada link do menu */
 .nav-links a {
     text-decoration: none;
     color: #ffffff;
@@ -66,24 +70,27 @@ body {
     border-radius: 20px;
     transition: all 0.2s ease;
 }
-
+/* Estado de hover e página ativa dos links */
 .nav-links a:hover, .nav-links a.active {
     background-color: #ffffff;
     color: #512da8;
     font-weight: bold;
 }
-
+/* ==========================================================================
+   ESTRUTURA PRINCIPAL E SEÇÃO INTRODUTÓRIA
+   ========================================================================== */
+/* Container central que limita a largura do conteúdo */
 .main-container {
     max-width: 1100px;
     margin: 40px auto;
     padding: 0 20px;
 }
-
+/* Bloco da introdução da página */
 .intro-secao {
     text-align: center;
     margin-bottom: 40px;
 }
-
+/* Tag/Pill destacando a iniciativa acadêmica */
 .tag-iniciativa {
     font-size: 11px;
     color: #512da8;
@@ -95,13 +102,13 @@ body {
     display: inline-block;
     margin-bottom: 10px;
 }
-
+/* Título principal H1 */
 .intro-secao h1 {
     font-size: 32px;
     color: #111;
     margin: 10px 0;
 }
-
+/* Parágrafos explicativos da seção intro */
 .intro-secao p {
     font-size: 15px;
     color: #555;
@@ -109,47 +116,24 @@ body {
     margin: 0 auto 15px auto;
     text-align: justify;
 }
-
-.tag-iniciativa {
-    font-size: 11px;
-    color: #512da8;
-    font-weight: bold;
-    letter-spacing: 1px;
-    background-color: #f3e5f5;
-    padding: 4px 10px;
-    border-radius: 12px;
-    display: inline-block;
-    margin-bottom: 10px;
-}
-
-.intro-secao h1 {
-    font-size: 32px;
-    color: #111;
-    margin: 10px 0;
-}
-
-.intro-secao p {
-    font-size: 15px;
-    color: #555;
-    max-width: 750px;
-    margin: 0 auto 15px auto;
-    text-align: justify;
-}
-
+/* ==========================================================================
+   SEÇÃO DO GRUPO E CARDS DOS INTEGRANTES
+   ========================================================================== */
+/* Título da seção de integrantes */
 .grupo-container h2 {
     font-size: 24px;
     margin-bottom: 25px;
     color: #111;
     text-align: center;
 }
-
+/* Container flexível para alinhar e distribuir os cards */
 .cards-grid {
     display: flex;
     flex-wrap: wrap;
     gap: 25px;
     justify-content: center;
 }
-
+/* Cartão individual de cada membro do grupo */
 .membro-card {
     background-color: #ffffff;
     border-radius: 16px;
@@ -160,36 +144,38 @@ body {
     text-align: center;
     transition: transform 0.2s;
 }
-
+/* Efeito de elevação ao passar o cursor no card */
 .membro-card:hover {
     transform: translateY(-5px);
 }
-
+/* Formatação circular e borda roxa das fotos */
 .membro-card img {
     border-radius: 50%;
     object-fit: cover;
     margin-bottom: 15px;
     border: 3px solid #512da8;
 }
-
+/* Nome do integrante */
 .membro-card h3 {
     font-size: 18px;
     color: #111;
 }
-
+/* Destaque para o curso/cargo */
 .cargo {
     font-size: 13px;
     color: #512da8;
     font-weight: bold;
     margin: 5px 0 10px 0;
 }
-
+/* Texto complementar (R.A.) */
 .bio {
     font-size: 14px;
     color: #666;
     text-align: center;
 }
-
+/* ==========================================================================
+   RODAPÉ (FOOTER)
+   ========================================================================== */
 footer {
     text-align: center;
     padding: 20px;
