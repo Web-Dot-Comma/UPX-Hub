@@ -57,8 +57,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             }
 
             if (imgPrototipo) {
-                imgPrototipo.src =
-                    projeto.imagem_prototipo || projeto.imagem_prototipo_url || projeto.prototipo_url || '';
+                imgPrototipo.src = projeto.imagem_prototipo || projeto.imagem_prototipo_url || projeto.prototipo_url || '';
             }
 
             if (imgEquipe) {
