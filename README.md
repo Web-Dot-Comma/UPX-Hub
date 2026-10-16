@@ -40,6 +40,7 @@ O **UPX Hub** é uma plataforma moderna e interativa criada para dar visibilidad
 * **Git & GitHub:** Controle de versão e colaboração em equipe.
 
 ---
+
 ## Arquitetura e Estrutura de Arquivos
 
 ```text
@@ -75,3 +76,16 @@ UPX-Hub/
     ├── projects.html
     ├── projects.css
     └── projects.js
+
+Autores e Contribuintes
+Desenvolvido com dedicação por estudantes de Engenharia da Computação da UniFacens (2026):
+
+Isadora Fioravante (R.A: 264384)
+
+Ana Kilciauskas (R.A: 263427)
+
+Erica Yuying (R.A: 264238)
+
+Erick Ruibin (R.A: 264239)
+
+Frederico Rodrigues (R.A: 264182)
