@@ -128,26 +128,262 @@ main {
             margin-top: 0 !important;
             padding-top: 0 !important;
         }
-        .main-nav ul {
-            flex-wrap: wrap;
+            .main-nav ul {
+                flex-wrap: wrap;
+            }
+        #faq {
+            display: flex;
+            flex-direction: column;
+            align-items: center;       
+            box-sizing: border-box;
+            margin: 20px 12px;
+            padding: 20px 12px;
+            box-sizing: border-box; 
+            overflow: hidden;   
+        }
+        .faq-item {
+            margin: 12px 0;     
+            width: 100%;           
+            box-sizing: border-box; 
+        }
+        .faq-item summary {
+            padding: 14px 16px;
+            font-size: 0.95rem;
+            box-sizing: border-box;
+        }
+        .faq-item p {
+            padding: 0 16px 16px 16px;
+            font-size: 0.9rem;
+            word-break: break-word; 
+        }
+        #faq h2 {
+            font-size: 1.3rem;
+            margin-bottom: 16px;
+        }
+
+        .proposta-cards {
+        flex-direction: column;
+        }
+        .proposta-footer {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 16px;
+        }
+        .social-medias {
+            width: 100%;
+            justify-content: space-between;
+        }
+
+        .social-medias li {
+            flex: 1;
+        }
+
+        .social-medias a {
+            width: 100%;
+            justify-content: center;
+            box-sizing: border-box;
         }
     }
 
+    #faq {
+        margin: 60px 40px 20px 40px;
+        padding: 30px;
+        background: #fcfcfd;
+        border-radius: 16px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+    }
 
+    #faq h2 {
+        color: #111827;
+        text-align: center;
+    }
 
-        #faq,
-        #proposta {
-            margin-top:80px;
-            margin-bottom: 40px;
+    .faq-item {
+        background-color: #f9f8fc;
+        border: 1px solid #f0e2f0;
+        border-radius: 10px;
+        margin: 24px 80px 12px 80px;
+        overflow: hidden;
+        transition: background-color 0.2s ease, border-color 0.2s ease;
+    }
+
+    .faq-item[open] {
+        background-color: #ffffff;
+        border-color: var(--roxo-claro);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
+    }
+
+    .faq-item summary {
+        color: #1f2937;
+        font-weight: 600;
+        padding: 18px 20px;
+        cursor: pointer;
+        list-style: none; 
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        user-select: none;
+    }
+
+    .faq-item summary::after {
+        content: "+";
+        color: var(--roxo-claro);
+        font-weight: 400;
+        transition: transform 0.3s ease;
         }
 
-    footer {
-        margin-top: auto;
-        background-color:var(--roxo-principal);
-        font-size: 12px;
-        padding: 2px;
-        color: var(--branco);
+    .faq-item[open] summary::after {
+        transform: rotate(45deg);
     }
+
+    .faq-item summary::-webkit-details-marker {
+        display: none;
+    }
+
+    .faq-item p {
+        color: #4b5563;
+        padding: 0 20px 20px 20px;
+        margin: 0;
+        line-height: 1.6;
+    }
+
+    #proposta {
+        max-width: 1100px;
+        margin: 60px auto;
+        padding: 0 20px;
+    }
+
+    .proposta-header {
+        text-align: center;
+        margin-bottom: 40px;
+    }
+
+    .proposta-header h2 {
+        font-size: 1.8rem;
+        color: #0f172a;
+        font-weight: 700;
+        margin-bottom: 8px;
+    }
+
+    .proposta-header .subtitulo {
+        font-size: 1rem;
+        color: #64748b;
+        max-width: 650px;
+        margin: 0 auto;
+    }
+
+    .proposta-cards {
+        display: flex;
+        gap: 24px;
+        margin-bottom: 48px;
+    }
+
+    .proposta-cards .card {
+        flex: 1;
+        background: #ffffff;
+        border: 1px solid #f1f5f9;
+        border-radius: 16px;
+        padding: 32px 24px;
+        text-align: center;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.03);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .icon-wrapper {
+        width: 48px;
+        height: 48px;
+        border-radius: 12px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 20px;
+    }
+
+    .icon-compartilhar {
+        background-color: #f3e8ff;
+        color: #7e22ce;
+    }
+
+    .icon-colaborar {
+        background-color: #fef3c7;
+        color: #b45309;
+    }
+
+    .icon-transformar {
+        background-color: #fae8ff;
+        color: #a21caf;
+    }
+
+    .proposta-cards .card h3 {
+        font-size: 1.25rem;
+        color: #0f172a;
+        margin-bottom: 12px;
+        font-weight: 600;
+    }
+
+    .proposta-cards .card p {
+        font-size: 0.9rem;
+        color: #64748b;
+        line-height: 1.5;
+        margin: 0;
+    }
+
+    .proposta-footer {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding-top: 24px;
+        border-top: 1px solid #f1f5f9;
+    }
+
+    .footer-texto h3 {
+        font-size: 1.05rem;
+        color: #0f172a;
+        margin: 0 0 4px 0;
+        font-weight: 600;
+    }
+
+    .footer-texto p {
+        font-size: 0.875rem;
+        color: #64748b;
+        margin: 0;
+    }
+
+    .social-medias {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        gap: 12px;
+    }
+
+    .social-medias a {
+        display: inline-flex;
+        align-items: center;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-size: 0.875rem;
+        font-weight: 500;
+        text-decoration: none;
+        background-color: #f1f5f9;
+        color: #334155;
+        transition: background-color 0.2s, transform 0.2s;
+    }
+
+    .social-medias a:hover {
+        background-color: #e2e8f0;
+        transform: translateY(-1px);
+    }
+
+footer {
+    margin-top: auto;
+    background-color:var(--roxo-principal);
+    font-size: 12px;
+    padding: 2px;
+    color: var(--branco);
+}
 
 /* --- SISTEMA DE FILTROS (BANNER AMARELO) --- */
 .filter-banner {
