@@ -9,7 +9,6 @@
 - [Principais Funcionalidades](#principais-funcionalidades)
 - [Tecnologias Utilizadas](#tecnologias-utilizadas)
 - [Arquitetura e Estrutura de Arquivos](#arquitetura-e-estrutura-de-arquivos)
-- [Banco de Dados e Autenticação (Supabase)](#banco-de-dados-e-autenticação-supabase
 - [Autores e Contribuintes](#autores-e-contribuintes)
 - [Licença](#licença)
 ---
@@ -81,7 +80,7 @@ UPX-Hub/
 ---
 
 Autores e Contribuintes
-Desenvolvido com dedicação por estudantes de Engenharia da Computação da UniFacens (2026):
+Desenvolvido com dedicação por estudantes de Engenharia da Computação do 2º semestre da UniFacens (2026):
 
 Isadora Fioravante (R.A: 264384)
 
