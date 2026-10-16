@@ -117,15 +117,13 @@
     border:3px solid #e5e7eb;
     border-radius: 12px;
     margin:36px;
+    padding:30px;
 }
 
 
 .comment{
-    background-color: #f9fafb;
     color:#000000;
-    padding:32px;
-    margin:24px;
-    border:3px solid #e5e7eb;
+    margin:2px;
     border-radius: 16px;
     display:flex;
     flex-direction: column;

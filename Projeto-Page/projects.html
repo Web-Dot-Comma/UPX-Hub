@@ -64,43 +64,40 @@
     
     
 
-
-<div class="box">
+<main>
+    <div class="box">
     <!-- Badges/Tags superiores -->
-    <div class="project-tags">
-        <span class="tag tag-theme">Engenharia Criativa</span>
-        <span class="tag tag-semester">1° Semstre. Upx2026.1</span>
-        <span class="tag tag-course">Engenharia da Computação</span>
-    </div>
+        <div class="project-tags">
+            <span id="tag-theme" class="tag tag-theme">Tema</span>
+            <span id="tag-semester" class="tag tag-semester">Semestre</span>
+            <span id="tag-course" class="tag tag-course">Curso</span>
+        </div>
 
-    <!-- Container principal que divide a linha em duas colunas: Esquerda (Texto) e Direita (Botões) -->
-    <div class="header-topo">
+        <!-- Container principal que divide a linha em duas colunas: Esquerda (Texto) e Direita (Botões) -->
+        <div class="header-topo">
         
         <!-- Coluna Esquerda: Agrupa Título e Descrição bem juntinhos -->
-        <div class="info-esquerda">
-            <h1 id="projeto-titulo">Título</h1>
-            <div class="linha-h2">
-                <h2 id="projeto-subtitulo">Subtítulo</h2>
+            <div class="info-esquerda">
+                <h1 id="projeto-titulo">Título</h1>
+                <div class="linha-h2">
+                </div>
+            </div>
+        
+            <!-- Coluna Direita: Botões empilhados -->
+            <div class="acoes-container-coluna">
+                <button
+                    class="action-btn btn-curtir"
+                    id="btn-curtir-detalhe"
+                    data-id=""
+                    aria-label="Curtir projeto"
+>
+                    <span class="icone">🤍</span>
+                    <span class="qtd">0</span> Curtidas
+                </button>
+                <button class="dev-button">👥 Devs</button>
             </div>
         </div>
-        
-        <!-- Coluna Direita: Botões empilhados -->
-        <div class="acoes-container-coluna">
-            <button
-    class="action-btn btn-curtir"
-    id="btn-curtir-detalhe"
-    data-id=""
-    aria-label="Curtir projeto"
->
-    <span class="icone">🤍</span>
-    <span class="qtd">0</span> Curtidas
-</button>
-            <button class="action-btn">👥 Devs</button>
-            
-        </div>
-
     </div>
-</div>
 
     <div class="project-align">
         <div class="proj-imag">
@@ -123,10 +120,8 @@
         <h3 id=projeto-texto-resumo>Texto Resumo</h3>
     </div>
     
-
-
     <div class="box-comment">
-        <h3 style="font-size:25px">Perguntas & Avaliações</h3>
+        <h3 style="font-size:25px">💬 Comentários & Perguntas</h3>
         <form class="comment" action="/enviar-comentario" method="POST">
             <label for="comentario" style="font-weight:bold;font-size:20px" >DEIXE UM COMENTÁRIO PARA O GRUPO</label>
             <textarea id="comentario" name="comentario" rows="5" cols="40" placeholder="Escreva aqui..."></textarea>
@@ -135,8 +130,8 @@
 
         <br><br>
         <h3>aqui esta os comentario de outras pessoas</h3>
-
     </div>
+</main>
 
     <footer>
         <p>
