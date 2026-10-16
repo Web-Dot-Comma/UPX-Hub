@@ -30,3 +30,13 @@ O **UPX Hub** é uma plataforma moderna e interativa criada para dar visibilidad
 * **Integração com Supabase:** Persistência robusta de dados em nuvem, controle de sessões de usuários, gerenciamento de likes e salvamento de metadados.
 
 ---
+
+## 🛠️ Tecnologias Utilizadas
+
+* **HTML5:** Marcação semântica, atributos de acessibilidade (`aria-*`) e elementos modernos de formulário.
+* **CSS3:** Variáveis personalizadas (`:root`), layouts em Flexbox e Grid, design responsivo com media queries e estilização de componentes.
+* **JavaScript (ES6+):** Manipulação de DOM, manipulação de eventos, validação assíncrona de formulários, consumo de APIs do Supabase e lógica client-side.
+* **Supabase (`@supabase/supabase-js`):** Backend-as-a-Service (BaaS) para autenticação de usuários, consultas ao banco de dados relacional e gerenciamento de arquivos.
+* **Git & GitHub:** Controle de versão e colaboração em equipe.
+
+---
