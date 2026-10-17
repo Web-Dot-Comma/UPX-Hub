@@ -26,6 +26,32 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .single();
 
             if (error) throw error;
+            
+            // Carrega o PDF do projeto
+            const pdfViewer = document.getElementById('pdf-viewer');
+            const pdfLink = document.getElementById('pdf-link');
+
+            const urlPdf = projeto.pdf_url;
+
+            if (urlPdf && pdfViewer && pdfLink) {
+                pdfViewer.src = urlPdf;
+                pdfViewer.style.display = 'block';
+
+                pdfLink.href = urlPdf;
+                pdfLink.textContent = 'Abrir PDF em outra aba';
+                pdfLink.style.display = 'inline-block';
+            } else {
+                if (pdfViewer) {
+                    pdfViewer.removeAttribute('src');
+                    pdfViewer.style.display = 'none';
+                }
+
+                if (pdfLink) {
+                    pdfLink.removeAttribute('href');
+                    pdfLink.style.display = 'none';
+                }
+            }
+
 
             console.log('Curtidas retornadas:', projeto.curtidas);
 

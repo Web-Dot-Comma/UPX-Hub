@@ -108,10 +108,33 @@
     </div>
 
     <div class="box">
-        <h1 id="projeto-titulo-resumo">Título</h1>
+        <h2 id="projeto-titulo-resumo">Título</h2>
         <h3 id=projeto-texto-resumo>Texto Resumo</h3>
     </div>
     
+    <!--Secção do PDF-->
+    <div class="box">
+        <div class="pdf-container">
+            <h3>Documentaoção do Projeto</h3>
+
+            <iframe
+                class="pdf-viewer"
+                id="pdf-viewer"
+                style="display: none;"
+            </iframe>
+
+            <!-- Caso o pdf não carregue-->
+             <a id="pdf-link"
+                href="#"
+                target="_blank"
+                style="display:none;"
+                class="btn-pdf"></a>
+        </div>
+
+    </div>
+
+
+
     <div class="box-comment">
         <h3 style="font-size:25px">💬 Comentários & Perguntas</h3>
         <form class="comment" action="/enviar-comentario" method="POST">
@@ -122,7 +145,7 @@
 
         <br><br>
         <!--Mostra os comentários postados-->
-        <div class="lista-comentarios" class="lista-comentarios">
+        <div id="lista-comentarios" class="lista-comentarios">
             <p>Carregando comentários...</p>
         </div>
     </div>
