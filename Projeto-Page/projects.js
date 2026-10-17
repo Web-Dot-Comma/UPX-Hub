@@ -191,6 +191,60 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 
     const formComentario = document.querySelector('.box-comment form.comment');
+        
+
+
+async function carregarComentarios() {
+    const lista = document.getElementById('lista-comentarios');
+
+    if (!lista) {
+        console.error('Elemento lista-comentarios não encontrado.');
+        return;
+    }
+
+    try {
+        const { data: comentarios, error } = await cliente
+            .from('comentarios')
+            .select('id, conteudo, created_at')
+            .eq('projeto_id', projetoId)
+            .order('created_at', { ascending: false });
+
+        if (error) throw error;
+
+        lista.replaceChildren();
+
+        if (!comentarios || comentarios.length === 0) {
+            lista.textContent = 'Ainda não há comentários neste projeto.';
+            return;
+        }
+
+        comentarios.forEach((comentario) => {
+            const card = document.createElement('div');
+            card.className = 'comentario-card';
+
+            const texto = document.createElement('p');
+            texto.textContent = comentario.conteudo;
+
+            card.appendChild(texto);
+
+            if (comentario.created_at) {
+                const data = document.createElement('small');
+                data.textContent = new Date(
+                    comentario.created_at
+                ).toLocaleString('pt-BR');
+
+                card.appendChild(data);
+            }
+
+            lista.appendChild(card);
+        });
+
+    } catch (erro) {
+        console.error('Erro ao carregar comentários:', erro);
+        lista.textContent = 'Não foi possível carregar os comentários.';
+    }
+}
+
 
     if (!formComentario) return;
 
@@ -234,6 +288,8 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             // 3. Caso tenha sucesso! 
             textarea.value = '';
+
+            await carregarComentarios();
             alert('Comentário enviado com sucesso!');
             
         } catch (erro) {
@@ -246,4 +302,5 @@ document.addEventListener('DOMContentLoaded', async () => {
 
     // Inicializa a página
     carregarProjeto();
+    carregarComentarios();
 });
