@@ -465,3 +465,86 @@
 .action-btn:hover {
     background-color: #f9fafb;
 }
+
+
+
+/* RESPONSIVIDADE */
+@media (max-width: 768px) {
+    .box,
+    .box-comment {
+        width: calc(100% - 24px);
+        margin: 12px auto;
+        padding: 18px;
+        box-sizing: border-box;
+    }
+
+    .header-topo {
+        flex-wrap: wrap;
+        gap: 16px;
+    }
+
+    .info-esquerda {
+        min-width: 0;
+        overflow-wrap: anywhere;
+    }
+
+    .project-align {
+        flex-wrap: wrap;
+        padding: 12px;
+        gap: 12px;
+    }
+
+    .proj-imag {
+        flex: 1 1 calc(50% - 12px);
+        min-width: 0;
+    }
+
+    .box-comment textarea {
+        width: 100%;
+        box-sizing: border-box;
+    }
+
+    .pdf-viewer {
+        height: 60vh;
+    }
+
+    .comentario-card {
+        overflow-wrap: anywhere;
+    }
+}
+
+@media (max-width: 480px) {
+    .header-topo {
+        flex-direction: column;
+    }
+
+    .acoes-container-coluna {
+        flex-direction: row;
+        flex-wrap: wrap;
+    }
+
+    .project-align {
+        flex-direction: column;
+    }
+
+    .proj-imag {
+        width: 100%;
+    }
+
+    .box-comment {
+        padding: 14px;
+    }
+
+    .box-comment form.comment button {
+        width: 100%;
+    }
+
+    .info-esquerda h1 {
+        font-size: 25px;
+    }
+
+    .pdf-viewer {
+        height: 50vh;
+        min-height: 300px;
+    }
+}

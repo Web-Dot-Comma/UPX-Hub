@@ -254,66 +254,122 @@ async function carregarComentarios() {
         return;
     }
 
+    lista.textContent = 'A carregar comentários...';
+
     try {
-        // 1. Busca os comentários do projeto
-        const { data: comentarios, error } = await cliente
+        // 1. Buscar os comentários do projeto
+        const {
+            data: comentarios,
+            error: erroComentarios
+        } = await cliente
             .from('comentarios')
             .select('id, conteudo, created_at, user_id')
             .eq('projeto_id', projetoId)
             .order('created_at', { ascending: false });
 
-        if (error) throw error;
+        if (erroComentarios) {
+            throw erroComentarios;
+        }
 
+        // Limpar a lista
         lista.replaceChildren();
 
+        // Verificar se existem comentários
         if (!comentarios || comentarios.length === 0) {
             lista.textContent = 'Ainda não há comentários neste projeto.';
             return;
         }
 
-        // 2. Recolhe todos os IDs únicos de utilizadores que comentaram
-        const userIds = [...new Set(comentarios.map(c => c.user_id).filter(Boolean))];
+        // 2. Recolher os IDs únicos dos utilizadores
+        const userIds = [
+            ...new Set(
+                comentarios
+                    .map(comentario => comentario.user_id)
+                    .filter(Boolean)
+            )
+        ];
 
-        // 3. Busca todos os perfis correspondentes numa única consulta eficiente
+        console.log('IDs dos utilizadores:', userIds);
+
+        // 3. Buscar os perfis dos autores
         let perfisMap = {};
+
         if (userIds.length > 0) {
-            const { data: perfis } = await cliente
+            const {
+                data: perfis,
+                error: erroPerfis
+            } = await cliente
                 .from('profiles')
                 .select('id, nome')
                 .in('id', userIds);
 
-            if (perfis) {
-                perfisMap = perfis.reduce((acc, p) => {
-                    acc[p.id] = p.nome;
-                    return acc;
-                }, {});
+            console.log('Perfis recebidos:', perfis);
+            console.log('Erro ao buscar perfis:', erroPerfis);
+
+            if (erroPerfis) {
+                throw erroPerfis;
             }
+
+            // Associar cada ID ao respetivo nome
+            perfisMap = Object.fromEntries(
+                (perfis || []).map(perfil => [
+                    perfil.id,
+                    perfil.nome
+                ])
+            );
         }
 
-        // 4. Cria os cartões associando o nome correto
+        // 4. Criar os cartões dos comentários
         for (const comentario of comentarios) {
-            const nomeUsuario = (comentario.user_id && perfisMap[comentario.user_id]) ? perfisMap[comentario.user_id] : 'Usuário';
+            const nomeEncontrado =
+                perfisMap[comentario.user_id];
+
+            const nomeUsuario =
+                typeof nomeEncontrado === 'string' &&
+                nomeEncontrado.trim() !== ''
+                    ? nomeEncontrado.trim()
+                    : 'Usuário';
 
             const card = document.createElement('article');
             card.className = 'comentario-card';
 
+            // Nome do autor
             const nome = document.createElement('h4');
             nome.className = 'comentario-autor';
             nome.textContent = nomeUsuario;
 
+            // Conteúdo do comentário
             const texto = document.createElement('p');
             texto.className = 'comentario-texto';
             texto.textContent = comentario.conteudo || '';
 
-            card.append(nome, texto);
+            // Data do comentário (opcional)
+            const data = document.createElement('small');
+            data.className = 'comentario-data';
+
+            if (comentario.created_at) {
+                data.textContent = new Date(
+                    comentario.created_at
+                ).toLocaleString('pt-BR');
+            }
+
+            card.append(nome, texto, data);
             lista.appendChild(card);
         }
 
     } catch (erro) {
         console.error('Erro ao carregar comentários:', erro);
-        lista.textContent = 'Não foi possível carregar os comentários.';
+
+        lista.replaceChildren();
+
+        const mensagem = document.createElement('p');
+        mensagem.textContent =
+            'Não foi possível carregar os comentários.';
+
+        lista.appendChild(mensagem);
     }
 }
+
 
     // Inicializa a página
     carregarProjeto();
