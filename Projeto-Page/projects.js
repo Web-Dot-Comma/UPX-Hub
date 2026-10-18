@@ -316,7 +316,7 @@ async function carregarComentarios() {
                     comentario.created_at
                 ).toLocaleString('pt-BR');
 
-                card.appendChild(data);
+                card.appendChild(nome, texto);
             }
 
             lista.appendChild(card);
