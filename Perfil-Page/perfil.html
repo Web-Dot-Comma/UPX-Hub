@@ -13,5 +13,63 @@
 </head>
 <body>
     
+    <header class="site-header">
+        <div class="header-container">
+            <a href="../index.html" class="logo-badge">
+                <span class="logo-text">UPX <span class="logo-dot">•</span> Hub</span>
+                <span class="logo-tag">FACENS</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html#listaProj">Projetos</a></li>
+                    <li><a href="../Conheca-Page/conheca.html">Conheça a UPX</a></li>
+                    <li><a href="../Cadastro-Page/cadastro.html">Cadastre seu Projeto</a></li>
+                    <li><a href="../Grupo-Page/grupo.html">Sobre o Grupo</a></li>
+                    <li><a href="perfil.html" class="active">Meu Perfil</a></li>
+                </ul>
+            </nav>
+        </div>
+        <div class="header-accent"></div>
+    </header>
+
+    <main class="perfil-main">
+        <p class="msg-form" id="msg-perfil" role="alert" hidden></p>
+
+        <!-- Cartão do usuário -->
+        <section class="perfil-card" id="perfil-card" hidden>
+            <div class="avatar-area">
+                <div class="avatar" id="avatar"></div>
+                <label class="btn-foto" for="input-avatar">Trocar foto</label>
+                <input type="file" id="input-avatar" accept="image/jpeg,image/png,image/webp" hidden>
+            </div>
+
+            <div class="perfil-info">
+                <h1 id="perfil-nome"></h1>
+                <p class="perfil-email" id="perfil-email"></p>
+                <div class="perfil-tags">
+                    <span class="course-tag" id="perfil-curso"></span>
+                    <span class="course-tag" id="perfil-semestre"></span>
+                </div>
+                <p class="perfil-desde" id="perfil-desde"></p>
+            </div>
+
+            <button type="button" class="btn-sair" id="btn-sair">Sair da conta</button>
+        </section>
+
+        <!-- Projetos do usuário -->
+        <section class="perfil-projetos" id="perfil-projetos" hidden>
+            <div class="perfil-projetos-topo">
+                <h2>Meus projetos</h2>
+                <span class="projects-count" id="perfil-contagem"></span>
+            </div>
+            <div class="projetos-grid" id="meus-projetos"></div>
+        </section>
+    </main>
+
+    <footer>
+        <p><strong>UPX Hub</strong> - Projetos da UPX UniFacens</p>
+        <p>Desenvolvido por estudantes do 2º semestre de Engenharia da Computação da UniFacens.</p>
+        <p id="copyright">&copy; 2026 UPX Hub - Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>
