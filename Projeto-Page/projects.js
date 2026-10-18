@@ -303,6 +303,45 @@ async function carregarComentarios() {
             nome.textContent = nomeUsuario;
 
             cabecalho.append(avatar, nome);
+            // Botão de excluir comentário
+const { data: { session } } = await cliente.auth.getSession();
+
+if (session && session.user.id === comentario.user_id) {
+    const btnExcluir = document.createElement('button');
+
+    btnExcluir.type = 'button';
+    btnExcluir.className = 'btn-excluir-comentario';
+    btnExcluir.textContent = '🗑️';
+    btnExcluir.title = 'Excluir comentário';
+    btnExcluir.setAttribute('aria-label', 'Excluir comentário');
+
+    btnExcluir.addEventListener('click', async () => {
+        if (!confirm('Deseja realmente excluir este comentário?')) {
+            return;
+        }
+
+        btnExcluir.disabled = true;
+
+        try {
+            const { error } = await cliente
+                .from('comentarios')
+                .delete()
+                .eq('id', comentario.id)
+                .eq('user_id', session.user.id);
+
+            if (error) throw error;
+
+            card.remove();
+
+        } catch (erro) {
+            console.error('Erro ao excluir comentário:', erro);
+            alert('Não foi possível excluir o comentário.');
+            btnExcluir.disabled = false;
+        }
+    });
+
+    cabecalho.appendChild(btnExcluir);
+}
 
             const texto = document.createElement('p');
             texto.className = 'comentario-texto';
@@ -334,5 +373,70 @@ async function carregarComentarios() {
 
     // Inicializa a página
     carregarProjeto();
-    carregarComentarios();
+    carregarComentarios();// Enviar comentário
+if (formComentario) {
+    formComentario.addEventListener('submit', async (event) => {
+        event.preventDefault();
+        
+
+        const textarea = document.getElementById('comentario');
+        const conteudo = textarea.value.trim();
+
+        if (!conteudo) {
+            alert('Digite um comentário antes de enviar.');
+            return;
+        }
+
+        try {
+            const { data: { session }, error: erroSessao } =
+                await cliente.auth.getSession();
+
+            if (erroSessao) throw erroSessao;
+
+            if (!session) {
+                alert('Faça login para enviar um comentário.');
+                window.location.href = '../Login-Page/login.html';
+                return;
+            }
+
+            const botaoEnviar = formComentario.querySelector(
+                'button[type="submit"]'
+            );
+
+            if (botaoEnviar) {
+                botaoEnviar.disabled = true;
+                botaoEnviar.textContent = 'Enviando...';
+            }
+
+            const { error } = await cliente
+                .from('comentarios')
+                .insert({
+                    conteudo: conteudo,
+                    projeto_id: projetoId,
+                    user_id: session.user.id
+                });
+
+            if (error) throw error;
+
+            textarea.value = '';
+
+            await carregarComentarios();
+
+
+        } catch (erro) {
+            console.error('Erro ao enviar comentário:', erro);
+            alert('Erro ao enviar comentário: ' + erro.message);
+
+        } finally {
+            const botaoEnviar = formComentario.querySelector(
+                'button[type="submit"]'
+            );
+
+            if (botaoEnviar) {
+                botaoEnviar.disabled = false;
+                botaoEnviar.textContent = 'Enviar comentário';
+            }
+        }
+    });
+}
 });
