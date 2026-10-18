@@ -70,8 +70,16 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             const url = cliente.storage.from('avatares').getPublicUrl(caminho).data.publicUrl;
 
+                        const avatarAntigo = (usuario.user_metadata || {}).avatar_url;
+
             const upd = await cliente.auth.updateUser({ data: { avatar_url: url } });
             if (upd.error) throw upd.error;
+
+            usuario = upd.data.user;
+
+            // Remove a foto anterior do Storage (falha aqui não é crítica)
+            const caminhoAntigo = caminhoDoStorage(avatarAntigo, 'avatares');
+            if (caminhoAntigo) await cliente.storage.from('avatares').remove([caminhoAntigo]);
 
             usuario = upd.data.user;
             desenharPerfil();
@@ -137,7 +145,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         const { data, error } = await cliente
             .from('projetos')
             .select('*, curtidas(count)')
-            .eq('user_id', usuario.id)
+            .eq('autor_id', usuario.id)
             .order('created_at', { ascending: false });
 
         document.getElementById('perfil-projetos').hidden = false;
@@ -173,14 +181,14 @@ document.addEventListener('DOMContentLoaded', async () => {
         const { data: proj } = await cliente
             .from('projetos')
             .select('imagem_url, imagem_prototipo_url, pdf_url')
-            .eq('id', id).eq('user_id', usuario.id).single();
+            .eq('id', id).eq('autor_id', usuario.id).single();
 
         // .select() devolve as linhas apagadas: se vier vazio, o RLS bloqueou
         const { data: apagados, error } = await cliente
             .from('projetos')
             .delete()
             .eq('id', id)
-            .eq('user_id', usuario.id)
+            .eq('autor_id', usuario.id)
             .select('id');
 
         if (error || !apagados || apagados.length === 0) {
