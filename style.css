@@ -692,3 +692,118 @@ footer {
 .btn-curtir.curtido { color: #d60012; font-weight: 700; }
 .btn-curtir:disabled { opacity: 0.5; cursor: wait; }
 
+/* --- PERFIL NA BARRA DE NAVEGAÇÃO --- */
+.nav-user {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.nav-user svg {
+    width: 18px;
+    height: 18px;
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+
+/* Pílula branca */
+.nav-user-pill {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 6px;
+    border-radius: 999px;
+    background: var(--branco);
+}
+
+.nav-avatar {
+    flex-shrink: 0;
+    width: 34px;
+    height: 34px;
+    border-radius: 50%;
+    border: 2px solid var(--amarelo);
+    background: #F1EAFB;
+    color: var(--roxo-principal);
+    object-fit: cover;
+    display: grid;
+    place-items: center;
+    font-size: 0.9rem;
+    font-weight: 700;
+}
+
+.nav-user-info {
+    display: flex;
+    flex-direction: column;
+    max-width: 170px;
+    line-height: 1.2;
+}
+
+.nav-user-nome {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--roxo-principal);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.nav-user-curso {
+    font-size: 0.7rem;
+    color: #6B6580;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.nav-user-curso:empty { display: none; }
+
+/* Botão de trocar de conta */
+.nav-btn-trocar {
+    flex-shrink: 0;
+    width: 30px;
+    height: 30px;
+    display: grid;
+    place-items: center;
+    border: none;
+    border-radius: 50%;
+    background: #F1EAFB;
+    color: var(--roxo-principal);
+    cursor: pointer;
+    transition: background 0.2s;
+}
+.nav-btn-trocar:hover { background: #E4DAF7; }
+.nav-btn-trocar:disabled { opacity: 0.5; cursor: wait; }
+
+/* Círculo roxo do perfil */
+.nav-btn-perfil {
+    width: 40px;
+    height: 40px;
+    display: grid;
+    place-items: center;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    background: var(--roxo-principal);
+    color: var(--branco);
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.nav-btn-perfil:hover { background: var(--roxo-claro); }
+
+/* Botão "Entrar" (quando não há login) */
+.nav-entrar {
+    padding: 10px 22px;
+    border-radius: 999px;
+    background: var(--branco);
+    color: var(--roxo-principal);
+    font-size: 0.9rem;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s;
+}
+.nav-entrar:hover { background: #F1EAFB; }
+
+@media (max-width: 720px) {
+    .nav-user-info { max-width: 130px; }
+}
