@@ -255,17 +255,10 @@ async function carregarComentarios() {
     }
 
     try {
-        // Faz a busca do comentário e já traz o nome da tabela profiles ligada pelo user_id
+        // 1. Busca os comentários do projeto
         const { data: comentarios, error } = await cliente
             .from('comentarios')
-            .select(`
-                id,
-                conteudo,
-                created_at,
-                profiles (
-                    nome
-                )
-            `)
+            .select('id, conteudo, created_at, user_id')
             .eq('projeto_id', projetoId)
             .order('created_at', { ascending: false });
 
@@ -278,17 +271,28 @@ async function carregarComentarios() {
             return;
         }
 
-        for (const comentario of comentarios) {
-            let nomeUsuario = 'Usuário';
+        // 2. Recolhe todos os IDs únicos de utilizadores que comentaram
+        const userIds = [...new Set(comentarios.map(c => c.user_id).filter(Boolean))];
 
-            // Extrai o nome do perfil retornado pelo Join do Supabase
-            if (comentario.profiles) {
-                if (Array.isArray(comentario.profiles) && comentario.profiles.length > 0) {
-                    nomeUsuario = comentario.profiles[0].nome || 'Usuário';
-                } else if (comentario.profiles.nome) {
-                    nomeUsuario = comentario.profiles.nome;
-                }
+        // 3. Busca todos os perfis correspondentes numa única consulta eficiente
+        let perfisMap = {};
+        if (userIds.length > 0) {
+            const { data: perfis } = await cliente
+                .from('profiles')
+                .select('id, nome')
+                .in('id', userIds);
+
+            if (perfis) {
+                perfisMap = perfis.reduce((acc, p) => {
+                    acc[p.id] = p.nome;
+                    return acc;
+                }, {});
             }
+        }
+
+        // 4. Cria os cartões associando o nome correto
+        for (const comentario of comentarios) {
+            const nomeUsuario = (comentario.user_id && perfisMap[comentario.user_id]) ? perfisMap[comentario.user_id] : 'Usuário';
 
             const card = document.createElement('article');
             card.className = 'comentario-card';
