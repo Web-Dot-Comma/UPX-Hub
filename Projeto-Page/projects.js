@@ -255,9 +255,17 @@ async function carregarComentarios() {
     }
 
     try {
+        // Faz a busca do comentário e já traz o nome da tabela profiles ligada pelo user_id
         const { data: comentarios, error } = await cliente
             .from('comentarios')
-            .select('id, conteudo, created_at, user_id')
+            .select(`
+                id,
+                conteudo,
+                created_at,
+                profiles (
+                    nome
+                )
+            `)
             .eq('projeto_id', projetoId)
             .order('created_at', { ascending: false });
 
@@ -273,15 +281,12 @@ async function carregarComentarios() {
         for (const comentario of comentarios) {
             let nomeUsuario = 'Usuário';
 
-            if (comentario.user_id) {
-                const { data: perfil, error: erroPerfil } = await cliente
-                    .from('profiles')
-                    .select('nome')
-                    .eq('id', comentario.user_id)
-                    .maybeSingle();
-
-                if (!erroPerfil && perfil && perfil.nome) {
-                    nomeUsuario = perfil.nome;
+            // Extrai o nome do perfil retornado pelo Join do Supabase
+            if (comentario.profiles) {
+                if (Array.isArray(comentario.profiles) && comentario.profiles.length > 0) {
+                    nomeUsuario = comentario.profiles[0].nome || 'Usuário';
+                } else if (comentario.profiles.nome) {
+                    nomeUsuario = comentario.profiles.nome;
                 }
             }
 
