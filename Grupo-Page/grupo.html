@@ -3,33 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sobre o Grupo - UPX UniFacens</title>
+    <title>Sobre o Grupo | UPX Hub</title>
+    <link rel="icon" href="../img/favicon.png">
     <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="grupo.css">
+
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2" defer></script>
+    <script src="../supabase-client.js" defer></script>
+    <script src="../auth-nav.js" defer></script>
+</head>
 </head>
 <body>
 
     <!-- CABEÇALHO / BARRA DE NAVEGAÇÃO -->
 
-    <header class="navbar">
-        <div class="logo-container">
+    <header class="site-header">
+        <div class="header-container">
             <a href="../index.html" class="logo-badge">
-                <span class="badge-upx">UPX</span>
-                <span class="hub-text">HUB</span>
-                <span class="facens-tag">FACENS</span>
+                <span class="logo-text">UPX <span class="logo-dot">•</span> Hub</span>
+                <span class="logo-tag">FACENS</span>
             </a>
+
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="../index.html#listaProj">Projetos</a></li>
+                    <li><a href="../Conheca-Page/conheca.html">Conheça a UPX</a></li>
+                    <li><a href="../Cadastro-Page/cadastro.html">Cadastre seu Projeto</a></li>
+                    <li><a href="grupo.html" class="active">Sobre o Grupo</a></li>
+                </ul>
+            </nav>
         </div>
-
-        <!-- Menu de Navegação Principal -->
-
-        <nav>
-            <ul class="nav-links">
-                <li><a href="../index.html#listaProj">Projetos</a></li>
-                <li><a href="/Conheca-Page/conheca.html">Conheça a UPX</a></li>
-                <li><a href="/Cadastro-Page/cadastro.html">Cadastre seu Projeto</a></li>
-                <li><a href="/Grupo-Page/grupo.html">Sobre o Grupo</a></li>
-            </ul>
-        </nav>
+        <div class="header-accent"></div>
     </header>
 
     <!-- CONTEÚDO PRINCIPAL -->
@@ -96,9 +100,15 @@
     <!-- RODAPÉ DA PÁGINA -->
 
     <footer>
-        <p>&copy; 2026 - UPX Hub Facens. Todos os direitos reservados.</p>
+        <p>
+            <strong>UPX Hub</strong> - Projetos da UPX UniFacens
+        </p>
+        <p>
+            Desenvolvido por estudantes do 2º semestre de Engenharia da Computação da UniFacens.
+        </p>
+        <p id="copyright">
+            &copy; 2026 UPX Hub - Todos os direitos reservados.
+        </p>
     </footer>
-
-    <script src="script.js"></script>
 </body>
 </html>
