@@ -34,11 +34,13 @@ document.addEventListener('DOMContentLoaded', async () => {
             const urlPdf = projeto.pdf_url;
 
             if (urlPdf && pdfViewer && pdfLink) {
-                pdfViewer.src = urlPdf;
+                pdfViewer.src = `${urlPdf}#navpanes=0`;
                 pdfViewer.style.display = 'block';
 
                 pdfLink.href = urlPdf;
                 pdfLink.textContent = 'Abrir PDF em outra aba';
+                pdfLink.target = '_blank';
+                pdfLink.rel = 'noopener noreferrer';
                 pdfLink.style.display = 'inline-block';
             } else {
                 if (pdfViewer) {
@@ -102,9 +104,33 @@ document.addEventListener('DOMContentLoaded', async () => {
                 imgEquipe.src = projeto.foto_equipe || '';
             }
 
-            if (devs) {
-                devs.textContent =
-                    `👥 ${projeto.membros ? projeto.membros.length : 0} Devs`;
+            const botaoDevs = document.getElementById('btn-devs');
+            const listaDevs = document.getElementById('nomes-devs');
+            const nomes = Array.isArray(projeto.membros) ? projeto.membros : [];
+
+            if (botaoDevs && listaDevs) {
+                botaoDevs.textContent = `👥 Devs (${nomes.length})`;
+                listaDevs.replaceChildren();
+
+            if (nomes.length === 0) {
+                listaDevs.textContent = '';
+
+                const item = document.createElement('li');
+                item.textContent = 'Nenhum integrante cadastrado';
+                listaDevs.appendChild(item);
+            }
+            else {
+                nomes.forEach(nome => {
+                        const item = document.createElement('li');
+
+                        // Aceita nomes em texto ou objetos com a propriedade nome
+                        item.textContent = typeof nome === 'string'
+                            ? nome
+                            : nome.nome || nome.name || 'Integrante';
+
+                        listaDevs.appendChild(item);
+                    });
+                }
             }
 
             // Verifica se o usuário já curtiu
@@ -229,9 +255,10 @@ async function carregarComentarios() {
     }
 
     try {
+        // Busca os comentários do projeto atual
         const { data: comentarios, error } = await cliente
             .from('comentarios')
-            .select('id, conteudo, created_at')
+            .select('id, conteudo, created_at, user_id')
             .eq('projeto_id', projetoId)
             .order('created_at', { ascending: false });
 
@@ -244,17 +271,47 @@ async function carregarComentarios() {
             return;
         }
 
-        comentarios.forEach((comentario) => {
-            const card = document.createElement('div');
+        // Para cada comentário, procuramos o nome na tabela profiles usando o user_id
+        for (const comentario of comentarios) {
+            let nomeUsuario = 'Usuário';
+
+            if (comentario.user_id) {
+                const { data: perfil, error: erroPerfil } = await cliente
+                    .from('profiles')
+                    .select('nome')
+                    .eq('id', comentario.user_id)
+                    .maybeSingle();
+
+                if (!erroPerfil && perfil && perfil.nome) {
+                    nomeUsuario = perfil.nome;
+                }
+            }
+
+            const card = document.createElement('article');
             card.className = 'comentario-card';
 
-            const texto = document.createElement('p');
-            texto.textContent = comentario.conteudo;
+            const cabecalho = document.createElement('div');
+            cabecalho.className = 'comentario-cabecalho';
 
-            card.appendChild(texto);
+            const avatar = document.createElement('div');
+            avatar.className = 'comentario-avatar';
+            avatar.textContent = nomeUsuario.charAt(0).toUpperCase();
+
+            const nome = document.createElement('h4');
+            nome.className = 'comentario-autor';
+            nome.textContent = nomeUsuario;
+
+            cabecalho.append(avatar, nome);
+
+            const texto = document.createElement('p');
+            texto.className = 'comentario-texto';
+            texto.textContent = comentario.conteudo || '';
+
+            card.append(cabecalho, texto);
 
             if (comentario.created_at) {
                 const data = document.createElement('small');
+                data.className = 'comentario-data';
                 data.textContent = new Date(
                     comentario.created_at
                 ).toLocaleString('pt-BR');
@@ -263,68 +320,13 @@ async function carregarComentarios() {
             }
 
             lista.appendChild(card);
-        });
+        }
 
     } catch (erro) {
         console.error('Erro ao carregar comentários:', erro);
         lista.textContent = 'Não foi possível carregar os comentários.';
     }
 }
-
-
-    if (!formComentario) return;
-
-    formComentario.addEventListener('submit', async (e) => {
-        e.preventDefault(); 
-
-        const textarea = document.getElementById('comentario');
-        const textoComentario = textarea.value.trim();
-
-        if (!textoComentario) {
-            alert('Escreve algum comentário antes de enviar!');
-            return;
-        }
-
-        try {
-            // 1. Verifica se o utilizador está autenticado
-            const { data: { session }, error: erroSessao } = await cliente.auth.getSession();
-            if (erroSessao) throw erroSessao;
-
-            if (!session) {
-                alert('Precisas de iniciar sessão para comentar.');
-                window.location.href = '../Login-Page/login.html';
-                return;
-            }
-
-            const usuarioId = session.user.id;
-            
-            // Pega o ID do projeto que está no URL (como já fazemos em cima)
-            const projetoId = Number(new URLSearchParams(window.location.search).get('id'));
-
-            // 2. Insere o comentário no Supabase
-            const { error: erroInsert } = await cliente
-                .from('comentarios')
-                .insert({
-                    projeto_id: projetoId,
-                    user_id: usuarioId,
-                    conteudo: textoComentario
-                });
-
-            if (erroInsert) throw erroInsert;
-
-            // 3. Caso tenha sucesso! 
-            textarea.value = '';
-
-            await carregarComentarios();
-            alert('Comentário enviado com sucesso!');
-            
-        } catch (erro) {
-            console.error('Erro ao enviar comentário:', erro);
-            alert('Ocorreu um erro ao enviar o comentário. Tenta novamente.');
-        }
-    });
-
-
 
     // Inicializa a página
     carregarProjeto();

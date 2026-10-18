@@ -86,7 +86,19 @@
                     <span class="icone">🤍</span>
                     <span class="qtd">0</span> Curtidas
                 </button>
-                <button class="dev-button">👥 Devs</button>
+            <div class="devs-wrapper">
+                <button id="btn-devs" class="action-btn" type="button"
+                    aria-expanded="false" aria-controls="lista-devs">
+                    👥 Devs (0)
+                </button>
+
+                <div class="devs-tooltip" id="lista-devs">
+                    <strong>Integrantes do projeto</strong>
+                    <ul id="nomes-devs">
+                    <li>Carregando...</li>
+                    </ul>
+                </div>
+            </div>
             </div>
         </div>
     </div>
@@ -120,7 +132,9 @@
             <iframe
                 class="pdf-viewer"
                 id="pdf-viewer"
-                style="display: none;">
+                title="Documentação do projeto"
+                style="display: none;"
+                loading="lazy">
             </iframe>
 
             <!-- Caso o pdf não carregue-->
@@ -145,7 +159,11 @@
 
         <br><br>
         <!--Mostra os comentários postados-->
-        <div id="lista-comentarios" class="lista-comentarios">
+        <div 
+            id="lista-comentarios"
+            class="lista-comentarios"
+            aria-live="polite"
+            arial-label="Comentários do projeto">
             <p>Carregando comentários...</p>
         </div>
     </div>
