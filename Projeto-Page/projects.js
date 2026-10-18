@@ -255,7 +255,6 @@ async function carregarComentarios() {
     }
 
     try {
-        // Busca os comentários do projeto atual
         const { data: comentarios, error } = await cliente
             .from('comentarios')
             .select('id, conteudo, created_at, user_id')
@@ -271,7 +270,6 @@ async function carregarComentarios() {
             return;
         }
 
-        // Para cada comentário, procuramos o nome na tabela profiles usando o user_id
         for (const comentario of comentarios) {
             let nomeUsuario = 'Usuário';
 
@@ -290,35 +288,15 @@ async function carregarComentarios() {
             const card = document.createElement('article');
             card.className = 'comentario-card';
 
-            const cabecalho = document.createElement('div');
-            cabecalho.className = 'comentario-cabecalho';
-
-            const avatar = document.createElement('div');
-            avatar.className = 'comentario-avatar';
-            avatar.textContent = nomeUsuario.charAt(0).toUpperCase();
-
             const nome = document.createElement('h4');
             nome.className = 'comentario-autor';
             nome.textContent = nomeUsuario;
-
-            cabecalho.append(avatar, nome);
 
             const texto = document.createElement('p');
             texto.className = 'comentario-texto';
             texto.textContent = comentario.conteudo || '';
 
-            card.append(cabecalho, texto);
-
-            if (comentario.created_at) {
-                const data = document.createElement('small');
-                data.className = 'comentario-data';
-                data.textContent = new Date(
-                    comentario.created_at
-                ).toLocaleString('pt-BR');
-
-                card.appendChild(nome, texto);
-            }
-
+            card.append(nome, texto);
             lista.appendChild(card);
         }
 
