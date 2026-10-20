@@ -1,0 +1,63 @@
+.termos-main {
+    width: 100%;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 30px 20px 60px;
+    line-height: 1.7;
+    color: #1F1633;
+}
+
+.termos-main h1 {
+    margin: 0 0 4px;
+    color: var(--roxo-principal);
+    font-size: 2rem;
+}
+
+.termos-main h2 {
+    margin: 32px 0 8px;
+    color: var(--roxo-claro);
+    font-size: 1.2rem;
+}
+
+.termos-main ul,
+.termos-main ol {
+    padding-left: 22px;
+}
+
+.termos-main li {
+    margin: 6px 0;
+}
+
+.termos-main a {
+    color: var(--roxo-claro);
+    font-weight: 600;
+}
+
+.termos-data {
+    margin: 0 0 20px;
+    color: #888;
+    font-size: 0.85rem;
+}
+
+.termos-intro {
+    margin-bottom: 24px;
+}
+
+.termos-indice {
+    padding: 16px 20px;
+    border-left: 6px solid var(--amarelo);
+    border-radius: 8px;
+    background: #F3EEFD;
+}
+
+.termos-indice ol {
+    margin: 8px 0 0;
+}
+
+.termos-main section {
+    scroll-margin-top: 20px;
+}
+
+.termos-voltar {
+    margin-top: 40px;
+}
