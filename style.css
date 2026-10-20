@@ -58,6 +58,12 @@ main {
         white-space: nowrap;
     }
 
+    .logo-img {
+    height: 40px;
+    width: auto;
+    display: block;
+    }
+
 /*estilizações do título*/
     .logo-text {
         font-weight: 700;
