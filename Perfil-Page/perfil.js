@@ -67,6 +67,7 @@ document.addEventListener('DOMContentLoaded', async () => {
             const up = await cliente.storage.from('avatares')
                 .upload(caminho, arquivo, { contentType: arquivo.type });
             if (up.error) throw up.error;
+            const url = cliente.storage.from('avatares').getPublicUrl(caminho).data.publicUrl;
 
             const { error: erroFotoPerfil } = await cliente
     .from('profiles')
