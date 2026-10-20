@@ -271,21 +271,23 @@ async function carregarComentarios() {
         }
 
         for (const comentario of comentarios) {
-            let nomeUsuario = 'Usuário';
+        let nomeUsuario = 'Usuário';
+        let fotoUsuario = null;
 
-            if (comentario.user_id) {
-                const { data: perfil, error: erroPerfil } = await cliente
-                    .from('profiles')
-                    .select('nome')
-                    .eq('id', comentario.user_id)
-                    .maybeSingle();
+        if (comentario.user_id) {
+            const { data: perfil, error: erroPerfil } = await cliente
+                .from('profiles')
+                .select('nome, avatar_url')
+                .eq('id', comentario.user_id)
+                .maybeSingle();
 
-                if (erroPerfil) {
-                    console.error('Erro ao buscar perfil:', erroPerfil);
-                } else if (perfil?.nome?.trim()) {
-                    nomeUsuario = perfil.nome.trim();
-                }
-            }
+        if (erroPerfil) {
+            console.error('Erro ao buscar perfil:', erroPerfil);
+        } else if (perfil) {
+            nomeUsuario = perfil.nome?.trim() || 'Usuário';
+            fotoUsuario = perfil.avatar_url || null;
+        }
+    }
 
             const card = document.createElement('article');
             card.className = 'comentario-card';
@@ -295,8 +297,23 @@ async function carregarComentarios() {
 
             const avatar = document.createElement('div');
             avatar.className = 'comentario-avatar';
-            avatar.textContent = nomeUsuario.charAt(0).toUpperCase();
             avatar.setAttribute('aria-hidden', 'true');
+
+            if (fotoUsuario) {
+                const imagem = document.createElement('img');
+                imagem.src = fotoUsuario;
+                imagem.alt = '';
+                imagem.className = 'comentario-avatar-img';
+
+                imagem.onerror = () => {
+                    imagem.remove();
+                    avatar.textContent = nomeUsuario.charAt(0).toUpperCase();
+                };
+
+                avatar.replaceChildren(imagem);
+            } else {
+                avatar.textContent = nomeUsuario.charAt(0).toUpperCase();
+            }
 
             const nome = document.createElement('h4');
             nome.className = 'comentario-autor';
