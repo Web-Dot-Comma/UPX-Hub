@@ -38,21 +38,21 @@
     overflow-wrap:  anywhere; 
 }
 .tag-theme{
-    color:#7e22ce;
-    background:#f3e8ff;
-    border-color: #e9d5ff;
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+    border-color: var(--roxo-principal);
 }
 
 .tag-semester{
-    color: #a16207;
-    background:#fffbeb;
-    border-color:#fde68a;
+    background-color: var(--amarelo);
+    color: var(--roxo-principal);
+    border-color: var(--amarelo);
 }
 
 .tag-course{
-    color: #1d4ed8;
-    background: #eff6ff;
-    border-color: #bfdbfe;
+    background-color: var(--roxo-claro);
+    color: var(--branco);
+    border-color: var(--roxo-claro);
 }
 
 
@@ -667,4 +667,31 @@
     .btn-excluir-comentario {
         padding: 8px 12px;
     }
+}
+
+
+
+.comentario-avatar {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    border-radius: 50%;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    background-color: var(--roxo-principal);
+    color: var(--branco);
+
+    font-size: 1rem;
+    font-weight: 700;
+}
+
+.comentario-avatar-img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 50%;
 }

@@ -68,7 +68,17 @@ document.addEventListener('DOMContentLoaded', async () => {
                 .upload(caminho, arquivo, { contentType: arquivo.type });
             if (up.error) throw up.error;
 
-            const url = cliente.storage.from('avatares').getPublicUrl(caminho).data.publicUrl;
+            const { error: erroFotoPerfil } = await cliente
+    .from('profiles')
+    .update({ avatar_url: url })
+    .eq('id', usuario.id);
+
+if (erroFotoPerfil) {
+    console.error(
+        'Erro ao salvar foto na tabela profiles:',
+        erroFotoPerfil
+    );
+}
 
                         const avatarAntigo = (usuario.user_metadata || {}).avatar_url;
 
