@@ -36,6 +36,7 @@ document.addEventListener('DOMContentLoaded', () => {
             tema: linha.tema,
             cursos: linha.cursos,
             devs: linha.membros.length,
+            membros: linha.membros || [],
             likes: linha.curtidas[0] ? linha.curtidas[0].count : 0
         };
     }
@@ -113,7 +114,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         await carregarMeusLikes();
         projetosData = data.map(converterProjeto);
-        renderizarProjetos(projetosData);
+        aplicarFiltros();
     }
 
         // Curtir / descurtir (um único listener para todos os cards)
@@ -165,6 +166,7 @@ document.addEventListener('DOMContentLoaded', () => {
     selects.forEach(select => {
         select.addEventListener('change', () => {
             atualizarChipsAtivos();
+            aplicarFiltros();
         });
     });
 
@@ -182,6 +184,7 @@ document.addEventListener('DOMContentLoaded', () => {
                 chip.querySelector('span').addEventListener('click', () => {
                     select.value = '';
                     atualizarChipsAtivos();
+                    aplicarFiltros();
                 });
                 
                 chipsContainer.appendChild(chip);
@@ -194,23 +197,33 @@ document.addEventListener('DOMContentLoaded', () => {
         selects.forEach(s => s.value = '');
         document.getElementById('busca-projeto').value = '';
         atualizarChipsAtivos();
+        aplicarFiltros();
     });
       //barra de pesquisa
     const searchInput = document.getElementById('busca-projeto');
     
-    searchInput.addEventListener('input', (event) => {
-        const value = formatString(event.target.value);
+    function aplicarFiltros() {
+        const curso = formatString(document.getElementById('filtro-curso').value);
+        const semestre = formatString(document.getElementById('filtro-semestre').value);
+        const tema = formatString(document.getElementById('filtro-tema').value);
+        const busca = formatString(searchInput.value);
 
-        
-            const projetosEncontrados = projetosData.filter(projeto =>
-                formatString(projeto.titulo).includes(value) ||
-                formatString(projeto.tema).includes(value) ||
-                formatString(projeto.semestre).includes(value) ||
-                projeto.cursos.some(curso =>
-                    formatString(curso).includes(value))
-                );
-                renderizarProjetos(projetosEncontrados);
-    })
+        const filtrados = projetosData.filter(p => {
+            if (curso && !p.cursos.some(c => formatString(c) === curso)) return false;
+            if (semestre && formatString(p.semestre) !== semestre) return false;
+            if (tema && formatString(p.tema) !== tema) return false;
+
+            if (busca) {
+                const campos = [p.titulo, p.tema, p.semestre, ...p.cursos, ...p.membros];
+                if (!campos.some(c => formatString(c).includes(busca))) return false;
+            }
+            return true;
+        });
+
+        renderizarProjetos(filtrados);
+    }
+
+    searchInput.addEventListener('input', aplicarFiltros);
         //funções para os valores retornarem sem precisar de pontuação e diferenciar o maiúsculo do minúsculo
     function formatString(value){
         return value
