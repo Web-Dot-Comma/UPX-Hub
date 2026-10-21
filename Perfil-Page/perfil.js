@@ -87,6 +87,7 @@ if (erroFotoPerfil) {
             if (upd.error) throw upd.error;
 
             usuario = upd.data.user;
+            await cliente.from('profiles').update({ avatar_url: url }).eq('id', usuario.id);
 
             // Remove a foto anterior do Storage (falha aqui não é crítica)
             const caminhoAntigo = caminhoDoStorage(avatarAntigo, 'avatares');
