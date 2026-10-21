@@ -16,6 +16,16 @@
     <script src="login.js" defer></script>
 </head>
 <body>
+<dialog class="modal-termos" id="modal-termos" aria-labelledby="titulo-termos">
+    <div class="modal-topo">
+        <h2 id="titulo-termos">Termos de Uso</h2>
+        <button type="button" class="modal-fechar" id="fechar-termos" aria-label="Fechar">✕</button>
+    </div>
+    <iframe class="modal-frame" id="frame-termos" title="Termos de Uso"></iframe>
+    <div class="modal-rodape">
+        <button type="button" class="botao-login" id="aceitar-termos">Li e concordo</button>
+    </div>
+</dialog>
 <main class="login-page">
 
     <!-- Cabeçalho do cartão -->
@@ -163,8 +173,8 @@
             </div>
 
             <label class="check">
-                <input type="checkbox" required>
-                <span>Concordo com os <a href="../Termos-Page/termos.html" class="link-roxo" target="_blank" rel="noopener noreferrer">Termos de Uso</a> e as diretrizes do ecossistema experimental UniFacens.</span>
+                <input type="checkbox" id="aceite-termos" required>
+                <span>Concordo com os <a href="../Termos-Page/termos.html" class="link-roxo" id="abrir-termos" target="_blank" rel="noopener noreferrer">Termos de Uso</a> e as diretrizes do ecossistema experimental UniFacens.</span>
             </label>
 
             <p class="mensagem" id="msg-cadastro" role="alert" hidden></p>

@@ -196,4 +196,33 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         mostrarMensagem(msgLogin, 'Se o e-mail estiver cadastrado, você receberá um link para redefinir a senha.', 'ok');
     });
+        // ----- Pop-up dos Termos de Uso -----
+    const modalTermos = document.getElementById('modal-termos');
+    const frameTermos = document.getElementById('frame-termos');
+    const linkTermos = document.getElementById('abrir-termos');
+    const aceiteTermos = document.getElementById('aceite-termos');
+
+    linkTermos.addEventListener('click', (evento) => {
+        evento.preventDefault();
+        // Carrega a página dos termos só na primeira vez que o pop-up abre
+        if (!frameTermos.getAttribute('src')) {
+            frameTermos.src = linkTermos.href;
+        }
+        modalTermos.showModal();
+    });
+
+    document.getElementById('fechar-termos').addEventListener('click', () => {
+        modalTermos.close();
+    });
+
+    // "Li e concordo": marca a caixinha do cadastro e fecha o pop-up
+    document.getElementById('aceitar-termos').addEventListener('click', () => {
+        aceiteTermos.checked = true;
+        modalTermos.close();
+    });
+
+    // Clicar fora da janela também fecha (a tecla Esc já fecha sozinha)
+    modalTermos.addEventListener('click', (evento) => {
+        if (evento.target === modalTermos) modalTermos.close();
+    });
 });
