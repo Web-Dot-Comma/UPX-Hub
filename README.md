@@ -61,36 +61,50 @@ O **UPX Hub** surge como a vitrine digital desse ecossistema, catalogando, prese
 ```text
 UPX-Hub/
 │
-├── index.html                   # Página principal e catálogo de projetos
-├── style.css                    # Estilos globais da aplicação
-├── script.js                    # Script principal e controle da home
-├── supabase-client.js           # Configuração e inicialização do cliente Supabase
-├── img/                         # Repositório de mídias (favicons e fotos dos membros)
-│   ├── favicon.png
-│   ├── logo-dot-comma.webp
-│   ├── Ana.jpg
-│   ├── Erica.jpg
-│   ├── Erick.jpg
-│   ├── Fred.jpg
-│   └── Isadora.jpg
-├── Conheca-Page/                # Módulo institucional da metodologia UPX
-│   ├── conheca.html
-│   └── conheca.css
-├── Grupo-Page/                  # Página de apresentação do grupo desenvolvedor
-│   ├── grupo.html
-│   └── grupo.css
-├── Cadastro-Page/               # Módulo de cadastro multi-etapas de projetos
-│   ├── cadastro.html
-│   ├── cadastro.css
-│   └── cadastro.js
-├── Login-Page/                  # Módulo de autenticação e gestão de usuários
-│   ├── login.html
-│   ├── login.css
-│   └── login.js
-└── Projects-Page/               # Módulo visualizador de detalhes do projeto
-    ├── projects.html
-    ├── projects.css
-    └── projects.js
+├── index.html                # Página principal com feed, filtros inteligentes e FAQ
+├── style.css                 # Estilos globais e variáveis de tema
+├── supabase-client.js        # Inicialização oficial do cliente Supabase (URL e Publishable Key)
+│
+├── css/
+│   ├── cadastro.css          # Estilização do formulário em etapas e regras responsivas
+│   ├── conheca.css           # Estilos da página explicativa sobre a metodologia UPX
+│   └── grupo.css             # Estilos da página de apresentação dos integrantes
+│
+├── js/
+│   ├── script.js             # Lógica do feed, filtros dinâmicos, chips e busca textual
+│   ├── cadastro.js           # Lógica do formulário, validações e envio ao Supabase
+│   └── auth-nav.js           # Gerenciamento dinâmico da pílula de usuário na barra de navegação
+│
+├── Login-Page/
+│   ├── login.html            # Página unificada de login e criação de conta
+│   ├── login.css             # Estilos específicos do painel de autenticação
+│   └── login.js              # Lógica de abas, força de senha e autenticação Supabase
+│
+├── Perfil-Page/
+│   ├── perfil.html           # Página de gerenciamento de perfil e projetos do usuário
+│   ├── perfil.css            # Estilos do cartão de perfil e listagem de submissões
+│   └── perfil.js             # Lógica de avatar, listagem e exclusão de projetos
+│
+├── Projeto-Page/
+│   ├── projects.html         # Exibição detalhada do projeto, mídias, PDF e comentários
+│   ├── projects.css          # Estilização do leitor PDF, cards de imagem e comentários
+│   └── projects.js             # Lógica de interações, curtidas e comentários
+│
+├── Termos-Page/
+│   ├── termos.html           # Termos de Uso e diretrizes de conformidade LGPD
+│   └── termos.css            # Estilização do documento institucional de termos
+│
+├── Cadastro-Page/
+│   └── cadastro.html         # Página de submissão de projetos em etapas
+│
+├── Conheca-Page/
+│   └── conheca.html          # Seção explicativa sobre a metodologia UPX
+│
+├── Grupo-Page/
+│   └── grupo.html            # Apresentação dos estudantes desenvolvedores
+│
+├── img/                      # Logotipos, ícones, fotos dos integrantes e favicons
+└── README.md                 # Documentação completa do repositório
 
 ``` 
 ---
