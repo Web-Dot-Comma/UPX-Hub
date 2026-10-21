@@ -61,3 +61,15 @@
 .termos-voltar {
     margin-top: 40px;
 }
+
+/* Modo pop-up: esconde o que já existe na janela do login */
+.embed .site-header,
+.embed footer,
+.embed .termos-main h1,
+.embed .termos-voltar {
+    display: none;
+}
+
+.embed .termos-main {
+    padding-top: 20px;
+}
