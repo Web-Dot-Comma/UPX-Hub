@@ -306,6 +306,9 @@ window.submitForm = async function () {
 
         // Deu certo: limpa o formulário e volta para a etapa 1
         form.reset();
+        Array.from(document.querySelectorAll('#container-membros .membro-item'))
+        .slice(1)
+        .forEach(function (item) { item.remove(); });
         secao.style.display = 'none';
         document.getElementById('step1').style.display = 'block';
         currentStep = 1;
