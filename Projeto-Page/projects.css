@@ -513,10 +513,6 @@
         box-sizing: border-box;
     }
 
-    .pdf-viewer {
-        height: 60vh;
-    }
-
     .comentario-card {
         overflow-wrap: anywhere;
     }
@@ -550,11 +546,6 @@
 
     .info-esquerda h1 {
         font-size: 25px;
-    }
-
-    .pdf-viewer {
-        height: 50vh;
-        min-height: 300px;
     }
 }
 

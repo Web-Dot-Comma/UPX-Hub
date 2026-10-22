@@ -74,7 +74,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
             if (tagSemestre) {
                 tagSemestre.textContent = projeto.semestre
-                ? `${projeto.semestre}º Semestre · UPX 2026.1`: '';
+                ? `${projeto.semestre}º Semestre`: '';
             }
 
             if (tagCurso) {
